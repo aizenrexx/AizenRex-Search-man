@@ -1,6 +1,6 @@
 param(
     [string]$MenuArg = "--card-view",
-    [string]$OutputFile = "C:\Users\riyad\.gemini\antigravity\brain\4a7e0e64-29ea-4774-983f-d1993385bc0d\aizen_card_view.png"
+    [string]$OutputFile = (Join-Path (Get-Location) "aizen_card_view.png")
 )
 
 Add-Type @"
@@ -43,7 +43,7 @@ Stop-Process -Name AizenSearch.App -Force -ErrorAction SilentlyContinue
 Start-Sleep -Seconds 1
 
 Write-Host "Starting AizenSearch with $MenuArg ..."
-$proc = Start-Process -FilePath "H:\My Project Coding\Lindy My Boss\My Software\Searching\publish\AizenSearch.App.exe" -ArgumentList $MenuArg -PassThru
+$proc = Start-Process -FilePath (Join-Path (Split-Path -Parent $PSScriptRoot) "Distribution\Portable\AizenSearch.App.exe") -ArgumentList $MenuArg -PassThru
 
 # Wait for window and WebView2 to initialize
 Start-Sleep -Seconds 4
