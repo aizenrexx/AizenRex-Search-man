@@ -23,6 +23,11 @@ public partial class MainWindow : Window
         Loaded += MainWindow_Loaded;
         Closed += MainWindow_Closed;
 
+        // Single source of truth for the version: UpdateService.CurrentVersion.
+        // The window title, the in-app badge and the About dialog all read from it,
+        // so they can never disagree with each other again.
+        Title = $"AizenRex Search-man v{UpdateService.CurrentVersion} (.NET 9)";
+
         // Bug #4 fix: a second instance forwards its command-line args to this (first) instance.
         App.SecondInstanceArgs += OnSecondInstanceArgs;
     }
@@ -112,6 +117,9 @@ public partial class MainWindow : Window
 
     private void CoreWebView2_NavigationCompleted(object? sender, CoreWebView2NavigationCompletedEventArgs e)
     {
+        // Hand the running version to the interface so every label agrees.
+        _ipcBridge?.EvalJs("appInfo", new { version = UpdateService.CurrentVersion });
+
         if (!e.IsSuccess) return;
 
         var cachedCount = _indexManager.TotalCount;
