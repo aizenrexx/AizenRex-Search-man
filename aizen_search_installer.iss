@@ -19,7 +19,7 @@
 ; Version comes from AIZEN_VERSION when set (CI/cloud build), otherwise local default.
 #define MyAppVersion GetEnv('AIZEN_VERSION')
 #if MyAppVersion == ""
-#define MyAppVersion "0.3.6"
+#define MyAppVersion "0.3.7"
 #endif
 
 #define MyAppIcon MySourceRoot + "\src\AizenSearch.App\AizenRex.ico"
