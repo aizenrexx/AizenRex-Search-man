@@ -1,0 +1,56 @@
+================================================================================
+AIZENREX SEARCH-MAN - SOFTWARE LICENSE & ARCHITECTURAL DISCLOSURE
+Version: 0.3.6 Professional Edition
+Architect & Lead Developer: Riyad (Aizen)
+================================================================================
+
+1. INTRODUCTION & PURPOSE
+--------------------------------------------------------------------------------
+AizenRex Search-man is an ultra-fast, lightweight desktop search and indexing suite
+engineered for instant microsecond retrieval across millions of local files and
+local and connected storage libraries.
+
+2. ARCHITECTURAL TRANSPARENCY & DATA PRIVACY
+--------------------------------------------------------------------------------
+- ZERO TELEMETRY / ZERO SURVEILLANCE:
+  AizenRex Search-man operates completely offline and private on your machine. None of
+  your file names, file paths, contents, queries, or indexing data are ever
+  transmitted to any external server or third party.
+- LOCAL HIGH-SPEED INDEXING:
+  Direct Master File Table (MFT) scanning and directory indexing operate purely
+  in local system RAM and serialize to your local user application profile
+  (%LocalAppData%\AizenSearch\).
+- CONNECTED STORAGE LIBRARIES:
+  Connected libraries can be indexed through supported local or mounted paths.
+  Indexing remains local and no files are uploaded.
+- ENGINEERING DISCLOSURE:
+  Conceived, designed, and architected by Riyad. Advanced AI-assisted algorithmic
+  optimization was leveraged during concurrency profiling, high-speed IPC bridge
+  design, and high-performance data serialization.
+
+3. IN-PLACE UPGRADE & DOWNGRADE GUARANTEE
+--------------------------------------------------------------------------------
+- Safe Upgrade/Downgrade: You may install newer or older versions of AizenRex Search-man
+  at any time. The installer guarantees that all your existing indexes, user
+  preferences, and cached databases located in %LocalAppData%\AizenSearch remain
+  100% intact with zero data loss.
+
+4. LICENSE TERMS (FREELY PERMITTED PERSONAL & PROFESSIONAL USE)
+--------------------------------------------------------------------------------
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to use, copy,
+distribute, and test the Software without restriction, subject to the condition
+that the author and architect attribution (Riyad) shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+Copyright (c) 2026 Riyad. All rights reserved.
+================================================================================
