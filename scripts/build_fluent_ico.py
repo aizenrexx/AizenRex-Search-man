@@ -109,4 +109,6 @@ def build_fluent_ico(output_path):
     print(f"Created authentic multi-resolution ICO at: {output_path}")
 
 if __name__ == "__main__":
-    build_fluent_ico(r"H:\My Project Coding\Lindy My Boss\My Software\Searching\src\AizenSearch.App\AizenSearch.ico")
+    import os
+_here = os.path.dirname(os.path.abspath(__file__))
+build_fluent_ico(os.path.join(_here, "..", "src", "AizenSearch.App", "AizenSearch.ico"))
