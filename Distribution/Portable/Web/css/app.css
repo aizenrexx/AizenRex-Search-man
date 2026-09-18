@@ -94,6 +94,61 @@ body.dark-theme .file-card:hover { border-color: #4da3ff; }
 body.dark-theme .file-card .file-card-name { color: #e4e7eb; }
 body.dark-theme .file-card-extra { color: #9ca3af; }
 
+
+/* ---------------------------------------------------------------------------
+   Symbol & emoji rendering
+   The UI uses a number of symbol glyphs (arrows, stars, checks, folder/movie
+   pictograms). They must NOT be resolved by the body font stack, otherwise
+   some Windows font fallbacks draw them as broken/blank boxes.
+   --------------------------------------------------------------------------- */
+:root {
+  --font-ui: "Segoe UI Variable Text", "Segoe UI", Tahoma, "Noto Sans", system-ui, sans-serif;
+  --font-symbol: "Segoe UI Symbol", "Segoe UI Emoji", "Noto Sans Symbols 2", "Noto Color Emoji", sans-serif;
+  --font-mono: Consolas, "Cascadia Mono", "Courier New", monospace;
+}
+
+html, body { font-family: var(--font-ui); }
+
+.menu-icon,
+.menu-shortcut,
+.flag,
+.glyph,
+.brand-logo-wrap,
+.modal-title-group > span,
+.changelog-badge-row,
+.badge-current,
+.credit-author,
+.update-pill-btn,
+.about-pill-btn,
+.modal-action-btn,
+.modal-secondary-btn,
+.modal-close-btn {
+  font-family: var(--font-symbol);
+}
+
+.glyph, .menu-icon { font-variant-emoji: text; }
+
+
+/* Update dialog states */
+.update-state { text-align: center; padding: 20px 10px; }
+.update-state-text { font-size: 12.5px; line-height: 1.5; color: #475569; margin: 8px 0 0; }
+.update-state-note { font-size: 11.5px; color: #64748b; margin: 4px 0 0; }
+.update-state-icon { font-family: var(--font-symbol); font-size: 34px; line-height: 1; margin-bottom: 8px; color: #15803d; }
+.update-state-title { font-size: 14px; font-weight: 700; color: #166534; }
+.update-version-card { background: #f0fdf4; border: 1px solid #86efac; border-radius: 6px; padding: 12px; margin-bottom: 14px; text-align: left; }
+.update-version-name { font-size: 13px; color: #166534; }
+.update-version-sub { font-size: 11.5px; color: #15803d; margin-top: 2px; }
+.update-notes { max-height: 180px; overflow-y: auto; background: #f8fafc; padding: 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 11.5px; white-space: pre-wrap; line-height: 1.55; text-align: left; color: #334155; }
+
+body.dark-theme .update-state-text { color: #cbd5e1; }
+body.dark-theme .update-state-note { color: #9ca3af; }
+body.dark-theme .update-state-icon { color: #4ade80; }
+body.dark-theme .update-state-title { color: #86efac; }
+body.dark-theme .update-version-card { background: #14311f; border-color: #2f6b45; }
+body.dark-theme .update-version-name { color: #86efac; }
+body.dark-theme .update-version-sub { color: #4ade80; }
+body.dark-theme .update-notes { background: #1b1f26; border-color: #3a3f4b; color: #d5dbe3; }
+
 /* Modals */
 body.dark-theme .modal-backdrop { background: rgba(0, 0, 0, 0.55); }
 body.dark-theme .modal-card,
@@ -165,7 +220,7 @@ html, body {
   margin: 0;
   height: 100%;
   overflow: hidden;
-  font: 13px "Segoe UI", Tahoma, sans-serif;
+  font: 13px var(--font-ui);
   color: var(--text);
   background: var(--bg);
   user-select: none;
@@ -220,7 +275,7 @@ html, body {
   height: 29px;
   border: 1px solid #8f8f8f;
   padding: 3px 28px 3px 8px;
-  font: 14px "Segoe UI";
+  font: 14px var(--font-ui);
   outline: 0;
   user-select: text;
 }
@@ -515,7 +570,7 @@ body.is-scrolling .row {
   padding: 8px 10px;
   overflow: auto;
   white-space: pre-wrap;
-  font: 11px Consolas, monospace;
+  font: 11px var(--font-mono);
   line-height: 1.45;
   background: #fff;
   user-select: text;
@@ -614,7 +669,7 @@ body.is-scrolling .row {
   border: 1px solid #e0e0e0;
   border-radius: 4px;
   padding: 8px 10px;
-  font: 11px Consolas, monospace;
+  font: 11px var(--font-mono);
   color: #444;
   white-space: pre-wrap;
   margin: 0;
@@ -838,7 +893,7 @@ body.is-scrolling .row {
   font-size: 12px;
   letter-spacing: 1.5px;
   color: #0078d7;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: var(--font-ui);
 }
 /* Autocomplete Ghost Suggestion */
 .ghost-suggestion {
@@ -848,7 +903,7 @@ body.is-scrolling .row {
   right: 32px;
   height: 29px;
   line-height: 29px;
-  font: 14px "Segoe UI";
+  font: 14px var(--font-ui);
   color: #8c8c8c;
   pointer-events: auto;
   cursor: pointer;
@@ -1437,7 +1492,7 @@ body.is-scrolling .row {
 }
 
 .syntax-code {
-  font-family: Consolas, "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   color: #0066cc;
