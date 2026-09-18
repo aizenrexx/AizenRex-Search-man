@@ -1,6 +1,6 @@
 ================================================================================
 AIZENREX SEARCH-MAN - SOFTWARE LICENSE & ARCHITECTURAL DISCLOSURE
-Version: 0.3.6 Professional Edition
+Version: 0.3.8 Professional Edition
 Architect & Lead Developer: Riyad (Aizen)
 ================================================================================
 
