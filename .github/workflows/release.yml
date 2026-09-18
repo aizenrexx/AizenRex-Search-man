@@ -49,13 +49,16 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Generate application icons
-        shell: pwsh
+      - name: Ensure application icons
+        shell: powershell
         run: |
-          New-Item -ItemType Directory -Force -Path "src/AizenSearch.App" | Out-Null
-          ./scripts/generate_ico.ps1 -OutputPath "src/AizenSearch.App/AizenRex.ico"
-          Copy-Item "src/AizenSearch.App/AizenRex.ico" "src/AizenSearch.App/AizenSearch.ico" -Force
-          Get-Item "src/AizenSearch.App/AizenRex.ico" | Format-List Name, Length
+          $icon = "src/AizenSearch.App/AizenRex.ico"
+          if (-not (Test-Path $icon)) {
+            Write-Host "Icon missing - generating it."
+            ./scripts/generate_ico.ps1 -OutputPath $icon
+          }
+          Copy-Item $icon "src/AizenSearch.App/AizenSearch.ico" -Force
+          Get-Item $icon | Format-List Name, Length
 
       - name: Restore
         run: dotnet restore AizenSearch.sln
