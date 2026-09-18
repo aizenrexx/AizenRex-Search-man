@@ -1,6 +1,17 @@
+param(
+    [string]$OutputPath = ""
+)
+
 Add-Type -AssemblyName System.Drawing
 
-$outputPath = "H:\My Project Coding\Lindy My Boss\My Software\Searching\src\AizenSearch.App\AizenSearch.ico"
+# Resolve the output path: explicit parameter, then AIZEN_SOURCE_ROOT (CI/cloud build),
+# then the local development folder.
+if (-not $OutputPath) {
+    $root = $env:AIZEN_SOURCE_ROOT
+    if (-not $root) { $root = "H:\My Project Coding\Lindy My Boss\My Software\Searching" }
+    $OutputPath = Join-Path $root "src\AizenSearch.App\AizenSearch.ico"
+}
+$outputPath = $OutputPath
 $sizes = @(256, 128, 64, 48, 32, 16)
 $pngBytesList = @()
 
