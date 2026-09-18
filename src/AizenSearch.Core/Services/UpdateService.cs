@@ -6,7 +6,7 @@ namespace AizenSearch.Core.Services;
 
 public static class UpdateService
 {
-    public const string CurrentVersion = "0.3.6";
+    public const string CurrentVersion = "0.3.7";
     public const string RepoOwner = "aizenrexx";
     public const string RepoName = "AizenSearch";
 
