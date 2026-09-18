@@ -1,18 +1,31 @@
-﻿; ==============================================================================
+; ==============================================================================
 ; AizenRex Search-man Professional Installer Script (Inno Setup 6)
 ; Architect & Lead Developer: Riyad (Aizen)
 ; Version: 0.3.6 Professional Edition
 ; ==============================================================================
 
 #define MyAppName "AizenRex Search-man"
-#define MyAppVersion "0.3.6"
 #define MyAppPublisher "Riyad"
 #define MyAppURL "https://github.com/aizenrexx/AizenSearch"
 #define MyAppExeName "AizenSearch.App.exe"
-#define MyAppIcon "H:\My Project Coding\Lindy My Boss\My Software\Searching\src\AizenSearch.App\AizenRex.ico"
-#define MyLicense "H:\My Project Coding\Lindy My Boss\My Software\Searching\license.txt"
-#define MySourceDir "H:\My Project Coding\Lindy My Boss\My Software\Searching\Distribution\Portable"
-#define MyOutputDir "H:\My Project Coding\Lindy My Boss\My Software\Searching\Distribution\Installer"
+
+; Paths are resolved relative to AIZEN_SOURCE_ROOT when set (CI/cloud build),
+; otherwise they fall back to the local development folder.
+#define MySourceRoot GetEnv('AIZEN_SOURCE_ROOT')
+#if MySourceRoot == ""
+#define MySourceRoot "H:\My Project Coding\Lindy My Boss\My Software\Searching"
+#endif
+
+; Version comes from AIZEN_VERSION when set (CI/cloud build), otherwise local default.
+#define MyAppVersion GetEnv('AIZEN_VERSION')
+#if MyAppVersion == ""
+#define MyAppVersion "0.3.6"
+#endif
+
+#define MyAppIcon MySourceRoot + "\src\AizenSearch.App\AizenRex.ico"
+#define MyLicense MySourceRoot + "\license.txt"
+#define MySourceDir MySourceRoot + "\Distribution\Portable"
+#define MyOutputDir MySourceRoot + "\Distribution\Installer"
 
 [Setup]
 ; Unique application GUID for seamless in-place upgrade and downgrade
@@ -37,7 +50,7 @@ WizardStyle=modern
 ArchitecturesInstallIn64BitMode=x64compatible
 PrivilegesRequiredOverridesAllowed=commandline dialog
 UninstallDisplayIcon={app}\{#MyAppExeName}
-VersionInfoVersion=0.3.6.0
+VersionInfoVersion={#MyAppVersion}.0
 VersionInfoCompany={#MyAppPublisher}
 VersionInfoDescription=AizenRex Search-man Setup - Lightweight Desktop Search
 VersionInfoCopyright=Copyright (C) 2026 Riyad. All rights reserved.
