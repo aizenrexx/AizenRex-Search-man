@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AizenRex Search-man v0.3.6 Professional</title>
+  <link rel="stylesheet" href="css/app.css?v=5">
+</head>
+<body>
+  <div class="app">
+    <!-- Top Menu -->
+    <nav class="menu">
+      <div class="brand-logo-wrap" title="AizenRex Search-man v0.3.6 Professional" onclick="window.toggleAbout()">
+        <img src="assets/logo.svg" class="brand-logo" alt="Logo">
+        <span class="brand-name">AizenRex</span>
+      </div>
+      <!-- File Menu -->
+      <div class="menu-item" id="menuItemFile">
+        <button class="menu-btn" onclick="window.toggleMenu('file', event)">File</button>
+        <div class="menu-dropdown" id="dropdownFile">
+          <div class="menu-dropdown-item" onclick="window.menuAction('open')">
+            <span class="menu-icon">📂</span>
+            <span class="menu-label">Open Selected</span>
+            <span class="menu-shortcut">Enter</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('folder')">
+            <span class="menu-icon">🗂️</span>
+            <span class="menu-label">Open Containing Folder</span>
+            <span class="menu-shortcut">Ctrl+Enter</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('terminal')">
+            <span class="menu-icon">💻</span>
+            <span class="menu-label">Open in PowerShell / Terminal</span>
+            <span class="menu-shortcut">Ctrl+Shift+T</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('run_admin')">
+            <span class="menu-icon">🛡️</span>
+            <span class="menu-label">Run as Administrator</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('copy_path')">
+            <span class="menu-icon">📋</span>
+            <span class="menu-label">Copy Full Path</span>
+            <span class="menu-shortcut">Ctrl+Shift+C</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('copy_name')">
+            <span class="menu-icon">🏷️</span>
+            <span class="menu-label">Copy Filename</span>
+            <span class="menu-shortcut">Ctrl+Alt+C</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('copy_hash')">
+            <span class="menu-icon">#️⃣</span>
+            <span class="menu-label">Calculate SHA-256 Hash</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('export_csv')">
+            <span class="menu-icon">📊</span>
+            <span class="menu-label">Export Results to CSV...</span>
+            <span class="menu-shortcut">Ctrl+S</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('rebuild')">
+            <span class="menu-icon">🔄</span>
+            <span class="menu-label">Rescan / Rebuild All Drives</span>
+            <span class="menu-shortcut">F5</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('properties')">
+            <span class="menu-icon">ℹ️</span>
+            <span class="menu-label">Properties</span>
+            <span class="menu-shortcut">Alt+Enter</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('exit')">
+            <span class="menu-icon">🚪</span>
+            <span class="menu-label">Exit</span>
+            <span class="menu-shortcut">Alt+F4</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Menu -->
+      <div class="menu-item" id="menuItemEdit">
+        <button class="menu-btn" onclick="window.toggleMenu('edit', event)">Edit</button>
+        <div class="menu-dropdown" id="dropdownEdit">
+          <div class="menu-dropdown-item" onclick="window.menuAction('copy_path')">
+            <span class="menu-icon">📋</span>
+            <span class="menu-label">Copy Selected Path</span>
+            <span class="menu-shortcut">Ctrl+C</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('copy_name')">
+            <span class="menu-icon">🏷️</span>
+            <span class="menu-label">Copy File Name</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('copy_dir')">
+            <span class="menu-icon">📁</span>
+            <span class="menu-label">Copy Containing Directory</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('select_all')">
+            <span class="menu-icon">☑️</span>
+            <span class="menu-label">Select All Visible Results</span>
+            <span class="menu-shortcut">Ctrl+A</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('invert_selection')">
+            <span class="menu-icon">🔄</span>
+            <span class="menu-label">Invert Selection</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('find')">
+            <span class="menu-icon">🔍</span>
+            <span class="menu-label">Focus Search Box</span>
+            <span class="menu-shortcut">Ctrl+F</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('clear_search')">
+            <span class="menu-icon">❌</span>
+            <span class="menu-label">Clear Search</span>
+            <span class="menu-shortcut">Esc</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Menu -->
+      <div class="menu-item" id="menuItemView">
+        <button class="menu-btn" onclick="window.toggleMenu('view', event)">View</button>
+        <div class="menu-dropdown" id="dropdownView">
+          <div class="menu-header-label">LAYOUT VIEW</div>
+          <div class="menu-dropdown-item" onclick="window.setViewMode('list')">
+            <span class="menu-check" id="menuViewList">✓</span>
+            <span class="menu-icon">☰</span>
+            <span class="menu-label">Details List</span>
+            <span class="menu-shortcut">Ctrl+Shift+1</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setViewMode('card')">
+            <span class="menu-check" id="menuViewCard"></span>
+            <span class="menu-icon">🗂️</span>
+            <span class="menu-label">Card / Tile Grid</span>
+            <span class="menu-shortcut">Ctrl+Shift+2</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setViewMode('compact')">
+            <span class="menu-check" id="menuViewCompact"></span>
+            <span class="menu-icon">☷</span>
+            <span class="menu-label">Compact List</span>
+            <span class="menu-shortcut">Ctrl+Shift+3</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.togglePreview()">
+            <span class="menu-check" id="menuCheckPreview">✓</span>
+            <span class="menu-label">Preview Pane</span>
+            <span class="menu-shortcut">Alt+P</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.showFavorites()">
+            <span class="menu-icon">⭐</span>
+            <span class="menu-label">Favorites</span>
+            <span class="menu-shortcut">Ctrl+Shift+F</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.findLargeFiles()">
+            <span class="menu-icon">🐘</span>
+            <span class="menu-label">Large Files (1 GB+)</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.findRecent()">
+            <span class="menu-icon">🕘</span>
+            <span class="menu-label">Recently Modified (7 days)</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.findDuplicates()">
+            <span class="menu-icon">🔁</span>
+            <span class="menu-label">Find Duplicate Files</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-header-label">SORT RESULTS BY</div>
+          <div class="menu-dropdown-item" onclick="window.menuSort('name')">
+            <span class="menu-check" id="menuSortName">✓</span>
+            <span class="menu-label">Name</span>
+            <span class="menu-shortcut">Ctrl+1</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuSort('path')">
+            <span class="menu-check" id="menuSortPath"></span>
+            <span class="menu-label">Path</span>
+            <span class="menu-shortcut">Ctrl+2</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuSort('type')">
+            <span class="menu-check" id="menuSortType"></span>
+            <span class="menu-label">Type / Extension</span>
+            <span class="menu-shortcut">Ctrl+3</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-header-label">FILTER BY TYPE</div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('all')">
+            <span class="menu-icon">🌐</span>
+            <span class="menu-label">Everything</span>
+            <span class="menu-shortcut">Alt+1</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('video')">
+            <span class="menu-icon">🎬</span>
+            <span class="menu-label">Video & Movies</span>
+            <span class="menu-shortcut">Alt+2</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('audio')">
+            <span class="menu-icon">🎵</span>
+            <span class="menu-label">Audio & Music</span>
+            <span class="menu-shortcut">Alt+3</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('doc')">
+            <span class="menu-icon">📄</span>
+            <span class="menu-label">Documents</span>
+            <span class="menu-shortcut">Alt+4</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('image')">
+            <span class="menu-icon">🖼️</span>
+            <span class="menu-label">Pictures / Images</span>
+            <span class="menu-shortcut">Alt+5</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('exe')">
+            <span class="menu-icon">⚙️</span>
+            <span class="menu-label">Applications</span>
+            <span class="menu-shortcut">Alt+6</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('archive')">
+            <span class="menu-icon">📦</span>
+            <span class="menu-label">Archives (Zip/Rar/7z)</span>
+            <span class="menu-shortcut">Alt+7</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.setFilter('folders')">
+            <span class="menu-icon">📁</span>
+            <span class="menu-label">Folders Only</span>
+            <span class="menu-shortcut">Alt+8</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('zoom_in')">
+            <span class="menu-icon">🔍+</span>
+            <span class="menu-label">Zoom In</span>
+            <span class="menu-shortcut">Ctrl++</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('zoom_out')">
+            <span class="menu-icon">🔍-</span>
+            <span class="menu-label">Zoom Out</span>
+            <span class="menu-shortcut">Ctrl+-</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('zoom_reset')">
+            <span class="menu-icon">🔄</span>
+            <span class="menu-label">Reset Zoom (100%)</span>
+            <span class="menu-shortcut">Ctrl+0</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.menuAction('refresh')">
+            <span class="menu-icon">🔁</span>
+            <span class="menu-label">Refresh View</span>
+            <span class="menu-shortcut">Ctrl+R</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Menu -->
+      <div class="menu-item" id="menuItemSearch">
+        <button class="menu-btn" onclick="window.toggleMenu('search', event)">Search</button>
+        <div class="menu-dropdown" id="dropdownSearch">
+          <div class="menu-dropdown-item" onclick="window.toggleSearchOption('match_case')">
+            <span class="menu-check" id="menuCheckCase"></span>
+            <span class="menu-label">Match Case (Case Sensitive)</span>
+            <span class="menu-shortcut">Ctrl+I</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.toggleSearchOption('whole_word')">
+            <span class="menu-check" id="menuCheckWord"></span>
+            <span class="menu-label">Match Whole Word</span>
+            <span class="menu-shortcut">Ctrl+B</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.toggleSearchOption('match_path')">
+            <span class="menu-check" id="menuCheckPath">✓</span>
+            <span class="menu-label">Match Full Path</span>
+            <span class="menu-shortcut">Ctrl+U</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.toggleSearchOption('regex')">
+            <span class="menu-check" id="menuCheckRegex"></span>
+            <span class="menu-label">Enable Regular Expressions</span>
+            <span class="menu-shortcut">Ctrl+E</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-header-label">SMART QUICK PRESETS</div>
+          <div class="menu-dropdown-item" onclick="window.applySearchPreset('superman 2006')">
+            <span class="menu-icon">🦸</span>
+            <span class="menu-label">Recent Video Search</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.applySearchPreset('type:video')">
+            <span class="menu-icon">🌐</span>
+            <span class="menu-label">Video Library</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.applySearchPreset('type:video')">
+            <span class="menu-icon">🎬</span>
+            <span class="menu-label">All High-Definition Video Files</span>
+          </div>
+          <div class="menu-dropdown-item" onclick="window.applySearchPreset('ext:zip|rar|7z|iso')">
+            <span class="menu-icon">💾</span>
+            <span class="menu-label">Disk Images & Large Archives</span>
+          </div>
+          <div class="menu-separator"></div>
+          <div class="menu-dropdown-item" onclick="window.showSyntaxModal(true)">
+            <span class="menu-icon">❓</span>
+            <span class="menu-label">Search Syntax Cheat Sheet...</span>
+            <span class="menu-shortcut">F1</span>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="window.toggleChangelog()">Changelog</button>
+      <button onclick="window.checkUpdate()">Updates</button>
+      <button onclick="window.openLogFolder()" title="Open diagnostics log folder">Logs</button>
+      <button onclick="window.toggleAbout()">About & Help</button>
+    </nav>
+
+    <!-- Floating Update Banner (Shown when new GitHub release is found) -->
+    <div class="update-banner" id="updateBanner" style="display:none">
+      <span class="update-icon">🚀</span>
+      <span id="updateBannerText">A newer version of AizenRex Search-man is available!</span>
+      <button onclick="window.toggleUpdateModal(true)" class="update-banner-btn">View Release</button>
+      <button onclick="document.getElementById('updateBanner').style.display='none'" class="update-banner-close" title="Dismiss">&times;</button>
+    </div>
+
+    <!-- Searchbar -->
+    <div class="searchbar">
+      <div class="input-wrap">
+        <input id="q" autofocus placeholder="Search files, folders, types, extensions, or paths..." autocomplete="off" spellcheck="false">
+        <div id="ghostSuggestion" class="ghost-suggestion" title="Press Tab or click to complete title"></div>
+        <button class="clear-btn" id="clearBtn" title="Clear (Esc)" onclick="window.clearSearch()">&times;</button>
+        <div class="search-history" id="searchHistory">
+          <div class="history-header">
+            <span>🕘 Recent Searches</span>
+            <button class="history-clear-all" onclick="window.clearSearchHistory()" title="Clear all history">Clear all</button>
+          </div>
+          <div id="searchHistoryList"></div>
+        </div>
+      </div>
+      <select id="filter" class="filter" onchange="window.setFilter(this.value)">
+        <option value="all">Everything</option>
+        <option value="files">Files</option>
+        <option value="folders">Folders</option>
+        <option value="exe">Applications</option>
+        <option value="doc">Documents</option>
+        <option value="image">Pictures</option>
+        <option value="audio">Audio</option>
+        <option value="video">Video</option>
+        <option value="archive">Archives (Zip/Rar)</option>
+      </select>
+      <!-- View Mode Switcher -->
+      <div class="view-mode-toggle" id="viewModeToggle">
+        <button class="view-btn active" id="btnViewList" onclick="window.setViewMode('list')" title="Details List View (Ctrl+Shift+1)">☰ List</button>
+        <button class="view-btn" id="btnViewCard" onclick="window.setViewMode('card')" title="Card / Tile Grid View (Ctrl+Shift+2)">🗂️ Cards</button>
+        <button class="view-btn" id="btnViewCompact" onclick="window.setViewMode('compact')" title="Compact List View (Ctrl+Shift+3)">☷ Compact</button>
+      </div>
+
+      <button class="tool-btn" id="previewBtn" onclick="window.togglePreview()" title="Toggle Preview Pane (Alt+P)">
+        👁 Preview
+      </button>
+      <button class="tool-btn" id="themeToggle" onclick="window.toggleTheme()" title="Toggle dark / light theme (Ctrl+Shift+D)">
+        🌙 Dark
+      </button>
+    </div>
+
+    <!-- Quick Category Filter Chips Strip -->
+    <div class="filter-chips-bar" id="filterChipsBar">
+      <button class="filter-chip active" data-filter="all" onclick="window.setFilter('all')">🌐 Everything</button>
+      <button class="filter-chip" data-filter="video" onclick="window.setFilter('video')">🎬 Videos</button>
+      <button class="filter-chip" data-filter="audio" onclick="window.setFilter('audio')">🎵 Audio</button>
+      <button class="filter-chip" data-filter="doc" onclick="window.setFilter('doc')">📄 Documents</button>
+      <button class="filter-chip" data-filter="image" onclick="window.setFilter('image')">🖼️ Pictures</button>
+      <button class="filter-chip" data-filter="exe" onclick="window.setFilter('exe')">⚙️ Applications</button>
+      <button class="filter-chip" data-filter="archive" onclick="window.setFilter('archive')">📦 Archives</button>
+      <button class="filter-chip" data-filter="folders" onclick="window.setFilter('folders')">📁 Folders</button>
+    </div>
+
+    <!-- Size / Date Advanced Filter Bar (Feature #3) -->
+    <div class="size-date-filter-bar" id="sizeDateBar">
+      <span class="sdf-label">📏 Size:</span>
+      <input type="text" id="minSize" class="sdf-input" placeholder="Min (MB)" title="Minimum size in MB — e.g. 100">
+      <span class="sdf-sep">–</span>
+      <input type="text" id="maxSize" class="sdf-input" placeholder="Max (MB)" title="Maximum size in MB — e.g. 5000">
+      <span class="sdf-divider"></span>
+      <span class="sdf-label">📅 Modified:</span>
+      <input type="date" id="dateAfter" class="sdf-date" title="Modified after this date">
+      <span class="sdf-sep">→</span>
+      <input type="date" id="dateBefore" class="sdf-date" title="Modified before this date">
+      <button class="sdf-clear" onclick="window.clearSizeDateFilters()" title="Clear filters">✕</button>
+    </div>
+
+    <!-- Query syntax help tooltip -->
+    <div class="query-help" id="queryHelp">
+      <b>Query syntax</b><br>
+      superman 2006 &nbsp; (Smart Gap Match)<br>
+      ext:py &nbsp; type:image/audio/video/doc/exe/file/folder &nbsp; path:src<br>
+      !node_modules &nbsp; "exact phrase" &nbsp; *wildcard* &nbsp; Alt+P (Preview)
+    </div>
+
+    <!-- Main Pane (Results + Preview) -->
+    <div class="pane" id="pane">
+      <main class="results">
+        <div class="head" id="headList">
+          <div onclick="window.sortBy('name')">Name <span id="sn">▲</span></div>
+          <div onclick="window.sortBy('path')">Path <span id="sp"></span></div>
+          <div onclick="window.sortBy('type')">Type <span id="st"></span></div>
+        </div>
+        <div class="card-toolbar" id="headCards" style="display:none">
+          <div class="card-stats" id="cardStats">Displaying Cards</div>
+          <div class="card-sort-controls">
+            <span>Sort:</span>
+            <button class="card-sort-btn active" id="csName" onclick="window.sortBy('name')">Name ▲</button>
+            <button class="card-sort-btn" id="csPath" onclick="window.sortBy('path')">Path</button>
+            <button class="card-sort-btn" id="csType" onclick="window.sortBy('type')">Type</button>
+          </div>
+        </div>
+        <div class="rows" id="rows">
+          <div class="spacer-layer" id="spacer">
+            <div class="visible-layer" id="visible">
+              <div class="empty">Loading index…</div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="preview" id="previewAside">
+        <div class="ptitle">
+          <span>Preview</span>
+          <button class="pclose-btn" onclick="window.togglePreview()" title="Close Preview (Alt+P)">&times;</button>
+        </div>
+        <div class="pbox" id="pbox">Select a file to preview</div>
+        <div class="pmeta">
+          <h3 id="pname">No selection</h3>
+          <div class="kv"><span>Type</span><b id="ptype">—</b></div>
+          <div class="kv"><span>Size</span><b id="psize">—</b></div>
+          <div class="kv"><span>Created</span><b id="pcreated">—</b></div>
+          <div class="kv"><span>Modified</span><b id="pmod">—</b></div>
+          <div class="kv"><span>Path</span><b id="ppath">—</b></div>
+        </div>
+        <div class="actions">
+          <button onclick="window.act('open')">Open</button>
+          <button onclick="window.act('folder')">Open Path</button>
+          <button onclick="window.act('copy')">Copy Full Path</button>
+          <button onclick="window.act('copy_name')">Copy Name</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Status Bar -->
+    <footer class="status">
+      <span id="status">Starting…</span>
+      <span id="selectedPath" style="margin-left:14px;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+      <div class="right">
+        <button id="mftbtn" style="display:none;border:1px solid #999;background:#fafafa;height:20px;cursor:pointer" onclick="window.ipc.postMessage({action:'elevate'})">Enable MFT (Admin)</button>
+        <span class="flag" id="flags"></span>
+        <span class="flag version-badge" id="buildVersion" onclick="window.toggleChangelog()" style="cursor:pointer" title="Click to view Version History & Changelog">v0.3.6 (.NET 9)</span>
+        <span id="totalCount">0 indexed</span>
+        <span id="count">0 results</span>
+        <button class="update-pill-btn" id="updatePillBtn" onclick="window.checkUpdate()" title="Check for Updates">⟳ Updates</button>
+        <button class="about-pill-btn" onclick="window.toggleAbout()" title="About AizenRex Search-man & Creator Credits">ⓘ About</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Deep Index Progress Overlay -->
+  <section class="index-overlay" id="indexOverlay">
+    <div class="index-title">
+      <span>Building fresh deep index</span>
+      <span id="indexPercent">0%</span>
+    </div>
+    <div class="index-body">
+      <div id="indexSummary">Preparing local volumes…</div>
+      <div class="progress-track"><div class="progress-fill" id="indexFill"></div></div>
+      <div id="driveStates"></div>
+      <div class="index-detail" id="indexDetail">Cached results remain searchable during refresh.</div>
+      <div class="index-actions">
+        <button class="index-cancel-btn" id="indexCancelBtn" onclick="window.cancelIndexing()" title="Stop the current indexing operation">✕ Cancel indexing</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Context Menu -->
+  <div class="ctx" id="ctx">
+    <button onclick="window.act('open')"><b>Open</b></button>
+    <button onclick="window.act('folder')">Open Containing Folder</button>
+    <button onclick="window.act('copy')">Copy Full Path</button>
+    <button onclick="window.act('copy_name')">Copy Name</button>
+    <button id="ctxPinBtn" onclick="window.toggleFavorite()">⭐ Pin to Favorites</button>
+    <button onclick="window.togglePreview()">Toggle Preview (Alt+P)</button>
+  </div>
+
+  <!-- About Modal Dialog -->
+  <div class="modal-backdrop" id="aboutModal" onclick="if(event.target===this) window.toggleAbout()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <img src="assets/logo.svg" class="modal-logo" alt="Logo">
+          <div>
+            <h2 class="modal-app-name">AizenRex Search-man</h2>
+            <div class="modal-version">v0.3.6 Professional Edition (.NET 9 + WebView2)</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.toggleAbout()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="credit-banner">
+          <div class="credit-role">Creator, Lead Software Architect & Developer</div>
+          <div class="credit-author">Riyad <span class="badge-author">Aizen</span></div>
+        </div>
+
+        <div class="about-desc">
+          <p><strong>AizenRex Search-man</strong> is a hyper-optimized desktop search and indexing engine engineered for instant microsecond retrieval across 2,500,000+ files and local and connected storage libraries.</p>
+
+          <h4 style="margin:12px 0 6px">Architecture & Engineering:</h4>
+          <ul style="margin:0;padding-left:18px;line-height:1.6;font-size:12px;color:#333">
+            <li><strong>Directory String Interning:</strong> Custom high-concurrency string pool reduces memory consumption by 85%+ (<350 MB RAM for 2.5M files).</li>
+            <li><strong>Compact V2 Binary Cache:</strong> Disk footprint reduced by 68% (155 MB) with microsecond startup deserialization.</li>
+            <li><strong>Direct NTFS USN Engine:</strong> Bare-metal MFT parsing in C# .NET 9 with zero Win32 shell overhead.</li>
+            <li><strong>Connected Storage Support:</strong> Efficient indexing and search across local and mounted file systems.</li>
+            <li><strong>VSync Virtual Grid:</strong> Silky-smooth 60–144 FPS list rendering with zero GC stutter or frame drops.</li>
+          </ul>
+
+          <div class="ai-disclosure">
+            <strong>Engineering & Architecture Disclosure:</strong><br>
+            Conceived, architected, and coded by Riyad. Advanced AI-assisted algorithmic optimization was utilized during concurrency profiling, high-speed IPC design, and performance tuning.
+          </div>
+
+          <div class="system-stats-card">
+            <div><span>Indexed Database:</span> <strong id="aboutTotalCount">2,470,000+ files</strong></div>
+            <div><span>Memory Footprint:</span> <strong style="color:#107c41">&lt; 350 MB (DirectoryPool V2)</strong></div>
+            <div><span>Storage Scope:</span> <strong style="color:#0078d7">Local and connected locations</strong></div>
+            <div><span>Engine Mode:</span> <strong>Windows MFT / USN + Parallel directory indexing</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="justify-content:space-between">
+        <div style="display:flex;gap:8px">
+          <button class="modal-secondary-btn" onclick="window.toggleAbout(false);window.toggleChangelog(true)">📜 Changelog</button>
+          <button class="modal-secondary-btn" onclick="window.checkUpdate()">⟳ Check Updates</button>
+        </div>
+        <button class="modal-action-btn" onclick="window.toggleAbout()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Changelog & Version History Modal -->
+  <div class="modal-backdrop" id="changelogModal" onclick="if(event.target===this) window.toggleChangelog()">
+    <div class="modal-card modal-card-lg">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <img src="assets/logo.svg" class="modal-logo" alt="Logo">
+          <div>
+            <h2 class="modal-app-name">Version History & Changelog</h2>
+            <div class="modal-version">AizenRex Search-man Development Journey</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.toggleChangelog()">&times;</button>
+      </div>
+      <div class="modal-body changelog-body">
+        
+        <!-- v0.3.6 Card -->
+        <div class="changelog-card current-release">
+          <div class="changelog-badge-row">
+            <span class="changelog-version">v0.3.6</span>
+            <span class="badge-current">Current Release</span>
+            <span class="changelog-date">September 2026</span>
+          </div>
+          <h4 class="changelog-headline">Lightweight Optimization, Search Performance & Auto-Update</h4>
+          <ul class="changelog-list">
+            <li><strong>Memory Reduction (2.7 GB → <350 MB):</strong> Implemented concurrent <code>DirectoryPool</code> string interning and V2 compact binary cache, reducing heap allocation by over 85%.</li>
+            <li><strong>Search and Index Improvements:</strong> Improved ranking, indexing responsiveness, and preview reliability for large libraries.</li>
+            <li><strong>GitHub Auto-Update System:</strong> Real-time release check against GitHub Releases API with automated background notifications.</li>
+            <li><strong>Professional Inno Setup Installer:</strong> Seamless in-place upgrade and downgrade support preserving cache and user preferences in <code>%LocalAppData%\AizenSearch</code>.</li>
+            <li><strong>Microsoft Fluent 3D Branding:</strong> Volumetric 3D Fluent logo and multi-resolution Windows ICO (256x256 down to 16x16).</li>
+          </ul>
+        </div>
+
+        <!-- v0.3.0 Card -->
+        <div class="changelog-card">
+          <div class="changelog-badge-row">
+            <span class="changelog-version">v0.3.0</span>
+            <span class="changelog-date">September 2026</span>
+          </div>
+          <h4 class="changelog-headline">Smart Gap Token Search & Real-Time Sync</h4>
+          <ul class="changelog-list">
+            <li><strong>Smart Gap Matching:</strong> Subsequence search logic allows multi-term queries like <code>superman 2006</code> to match full movie release strings instantly.</li>
+            <li><strong>Ghost Autocomplete:</strong> Real-time Tab-to-fill and Arrow-Right auto-completion based on highest relevance candidate.</li>
+            <li><strong>USN / FileSystemWatcher Sync:</strong> Real-time instant index updates when files are created, renamed, or deleted without full rescans.</li>
+            <li><strong>Transparent About & Credits:</strong> Detailed architectural attribution crediting Riyad with AI-assisted optimization disclosure.</li>
+          </ul>
+        </div>
+
+        <!-- v0.2.0 Card -->
+        <div class="changelog-card">
+          <div class="changelog-badge-row">
+            <span class="changelog-version">v0.2.0</span>
+            <span class="changelog-date">September 2026</span>
+          </div>
+          <h4 class="changelog-headline">60–144 FPS VSync Virtual Grid & Fast IPC</h4>
+          <ul class="changelog-list">
+            <li><strong>Zero-Lock Virtual Grid:</strong> High-performance virtualized scrolling DOM handling millions of rows with zero frame drops or scrolling lag.</li>
+            <li><strong>Native IPC Bridge:</strong> Eliminated all background command prompt (CMD) popups by moving to direct WebView2 IPC messaging.</li>
+            <li><strong>Live Preview Pane:</strong> Fast file inspection for images, video, audio, code, and executables with Windows shell icons.</li>
+          </ul>
+        </div>
+
+        <!-- v0.1.0 Card -->
+        <div class="changelog-card">
+          <div class="changelog-badge-row">
+            <span class="changelog-version">v0.1.0</span>
+            <span class="changelog-date">September 2026</span>
+          </div>
+          <h4 class="changelog-headline">Initial High-Speed File Indexing Engine</h4>
+          <ul class="changelog-list">
+            <li><strong>Direct NTFS Engine:</strong> Direct low-level parsing of Master File Table (MFT) records for ultra-fast local drive indexing.</li>
+            <li><strong>Connected Location Support:</strong> Parallel directory scanning across local and mounted Windows locations.</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-btn" onclick="window.toggleChangelog()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Dialog Modal -->
+  <div class="modal-backdrop" id="updateModal" onclick="if(event.target===this) window.toggleUpdateModal()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span style="font-size:24px">⟳</span>
+          <div>
+            <h2 class="modal-app-name" id="updateModalTitle">Software Update</h2>
+            <div class="modal-version" id="updateModalSubtitle">Checking for latest version…</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.toggleUpdateModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="updateModalBody">
+        <div style="text-align:center;padding:24px;color:#666">
+          <div class="spinner"></div>
+          <p style="margin-top:12px">Connecting to GitHub releases repository…</p>
+        </div>
+      </div>
+      <div class="modal-footer" id="updateModalFooter">
+        <button class="modal-action-btn" onclick="window.toggleUpdateModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Syntax Cheat Sheet Modal -->
+  <div class="modal-backdrop" id="syntaxModal" onclick="if(event.target===this) window.showSyntaxModal(false)">
+    <div class="modal-card" style="max-width: 680px">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span style="font-size: 26px">⚡</span>
+          <div>
+            <h2 class="modal-app-name">Search Syntax & Power Operators</h2>
+            <div class="modal-version">AizenRex Search-man Ultra-Fast Query Guide</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.showSyntaxModal(false)">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 20px 24px; font-size: 13px; line-height: 1.6;">
+        <div class="syntax-grid">
+          <div class="syntax-row">
+            <div class="syntax-code">superman 2006</div>
+            <div class="syntax-desc"><b>Smart Sub-sequence Gap Match</b>: Matches <i>Superman Returns (2006)</i> even with tokens separated by words.</div>
+          </div>
+          <div class="syntax-row">
+            <div class="syntax-code">ext:mp4 | ext:mkv|mp4</div>
+            <div class="syntax-desc"><b>Extension Filter</b>: Matches only specific file formats or multiple extensions with pipe (|).</div>
+          </div>
+          <div class="syntax-row">
+            <div class="syntax-code">type:video / audio / doc</div>
+            <div class="syntax-desc"><b>Category Filter</b>: Filters by category (video, audio, image, doc, exe, archive, folder, file).</div>
+          </div>
+          <div class="syntax-row">
+            <div class="syntax-code">path:Documents</div>
+            <div class="syntax-desc"><b>Directory Path Filter</b>: Forces matching within parent directory path.</div>
+          </div>
+          <div class="syntax-row">
+            <div class="syntax-code">!node_modules !temp</div>
+            <div class="syntax-desc"><b>Exclusion Operator (!)</b>: Exclude items containing specific words or directory names.</div>
+          </div>
+          <div class="syntax-row">
+            <div class="syntax-code">"avengers endgame"</div>
+            <div class="syntax-desc"><b>Exact Phrase Match ("")</b>: Matches the exact contiguous phrase inside quotes.</div>
+          </div>
+          <div class="syntax-row">
+            <div class="syntax-code">setup*.exe / img_??.png</div>
+            <div class="syntax-desc"><b>Wildcards (* and ?)</b>: Asterisk matches multiple characters, question mark matches one.</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-btn" onclick="window.showSyntaxModal(false)">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification"></div>
+
+  <script src="js/app.js?v=6"></script>
+</body>
+</html>
+
