@@ -355,7 +355,7 @@ class VirtualGrid {
           if (!item) {
             html += `
               <div class="file-card placeholder-card" data-idx="${i}">
-                <div class="card-icon-wrap"><span class="fallback-icon">ðŸ“„</span></div>
+                <div class="card-icon-wrap"><span class="fallback-icon">📄</span></div>
                 <div class="card-content">
                   <div class="card-name" style="color:#999">Loading item ${i + 1}...</div>
                 </div>
@@ -368,7 +368,7 @@ class VirtualGrid {
           const key = this.getIconKey(item);
           const ext = (item.Ext || '').toLowerCase();
           let iconSrc = this.iconCache[key] || this.iconCache[ext] || (item.IsFolder ? this.iconCache.__folder__ : this.iconCache.__file__);
-          const iconHtml = iconSrc ? `<img src="${iconSrc}">` : `<span class="fallback-icon">${item.IsFolder ? 'ðŸ“' : 'ðŸ“„'}</span>`;
+          const iconHtml = iconSrc ? `<img src="${iconSrc}">` : `<span class="fallback-icon">${item.IsFolder ? '📁' : '📄'}</span>`;
           const badge = getCategoryBadge(item);
 
           html += `
@@ -377,15 +377,15 @@ class VirtualGrid {
               <div class="card-content">
                 <div class="card-header-line">
                   <span class="card-badge ${badge.cls}">${badge.label}</span>
-                  ${i === 0 && this.highlightQuery ? '<span style="font-size:10px;font-weight:700;color:#0078d7">â˜… Best Match</span>' : ''}
+                  ${i === 0 && this.highlightQuery ? '<span style="font-size:10px;font-weight:700;color:#0078d7">★ Best Match</span>' : ''}
                 </div>
                 <div class="card-name" title="${this.escapeHtml(item.Name)}">${this.highlight(item.Name)}</div>
                 <div class="card-path" title="${this.escapeHtml(item.Path)}">${this.escapeHtml(item.Path)}</div>
               </div>
               <div class="card-actions">
-                <button class="card-act-btn" data-action="folder" data-idx="${i}" title="Open Containing Folder">ðŸ“‚</button>
-                <button class="card-act-btn" data-action="copy" data-idx="${i}" title="Copy Full Path">ðŸ“‹</button>
-                <button class="card-act-btn" data-action="open" data-idx="${i}" title="Open File">âš¡</button>
+                <button class="card-act-btn" data-action="folder" data-idx="${i}" title="Open Containing Folder">📂</button>
+                <button class="card-act-btn" data-action="copy" data-idx="${i}" title="Copy Full Path">📋</button>
+                <button class="card-act-btn" data-action="open" data-idx="${i}" title="Open File">⚡</button>
               </div>
             </div>
           `;
@@ -423,7 +423,7 @@ class VirtualGrid {
       if (!item) {
         html += `
           <div class="row placeholder-row" style="top:${(i - start) * this.rowHeight}px" data-idx="${i}">
-            <div style="color:#999"><span class="glyph">ðŸ“„</span>Loading item ${i + 1}...</div>
+            <div style="color:#999"><span class="glyph">📄</span>Loading item ${i + 1}...</div>
             <div class="path"></div>
             <div class="type"></div>
           </div>
@@ -436,7 +436,7 @@ class VirtualGrid {
       const ext = (item.Ext || '').toLowerCase();
 
       let iconSrc = this.iconCache[key] || this.iconCache[ext] || (item.IsFolder ? this.iconCache.__folder__ : this.iconCache.__file__);
-      const iconHtml = iconSrc ? `<img src="${iconSrc}">` : `<span class="fallback-icon">${item.IsFolder ? 'ðŸ“' : 'ðŸ“„'}</span>`;
+      const iconHtml = iconSrc ? `<img src="${iconSrc}">` : `<span class="fallback-icon">${item.IsFolder ? '📁' : '📄'}</span>`;
 
       html += `
         <div class="row ${isSelected ? 'selected' : ''}" style="top:${(i - start) * this.rowHeight}px" data-idx="${i}">
@@ -504,9 +504,9 @@ class VirtualGrid {
     const mvList = $('menuViewList');
     const mvCard = $('menuViewCard');
     const mvCompact = $('menuViewCompact');
-    if (mvList) mvList.textContent = mode === 'list' ? 'âœ“' : '';
-    if (mvCard) mvCard.textContent = mode === 'card' ? 'âœ“' : '';
-    if (mvCompact) mvCompact.textContent = mode === 'compact' ? 'âœ“' : '';
+    if (mvList) mvList.textContent = mode === 'list' ? '✓' : '';
+    if (mvCard) mvCard.textContent = mode === 'card' ? '✓' : '';
+    if (mvCompact) mvCompact.textContent = mode === 'compact' ? '✓' : '';
 
     this.updateViewMetrics();
     this.lastStart = -1;
@@ -619,11 +619,11 @@ class PreviewController {
     if (this.requestedPath && p.Path && p.Path !== this.requestedPath) return;
 
     this.nameEl.textContent = p.Name || 'No selection';
-    this.typeEl.textContent = p.Extension ? `${p.Extension} (${p.Kind})` : (p.Kind || 'â€”');
-    this.sizeEl.textContent = p.Size || 'â€”';
-    this.pathEl.textContent = p.Path || 'â€”';
-    if (this.createdEl) this.createdEl.textContent = p.Created || 'â€”';
-    if (this.modEl) this.modEl.textContent = p.Modified || 'â€”';
+    this.typeEl.textContent = p.Extension ? `${p.Extension} (${p.Kind})` : (p.Kind || '—');
+    this.sizeEl.textContent = p.Size || '—';
+    this.pathEl.textContent = p.Path || '—';
+    if (this.createdEl) this.createdEl.textContent = p.Created || '—';
+    if (this.modEl) this.modEl.textContent = p.Modified || '—';
 
     this.box.innerHTML = '';
 
@@ -636,7 +636,7 @@ class PreviewController {
     } else if (p.Kind === 'image') {
       this.box.innerHTML = `
         <div class="media-player-box">
-          ${p.IconBase64 ? `<img class="file-card-icon" src="${p.IconBase64}">` : `<div class="audio-disc-icon">ðŸ–¼ï¸</div>`}
+          ${p.IconBase64 ? `<img class="file-card-icon" src="${p.IconBase64}">` : `<div class="audio-disc-icon">🖼️</div>`}
           <div class="media-title">${this.escape(p.Name)}</div>
           <div class="file-card-size">${this.escape(p.Size)}</div>
           <div class="file-card-extra">${this.escape(p.ExtraInfo || 'Image (Click Open to view)')}</div>
@@ -645,11 +645,11 @@ class PreviewController {
     } else if (p.Kind === 'audio') {
       this.box.innerHTML = `
         <div class="media-player-box">
-          <div class="audio-disc-icon">ðŸŽµ</div>
+          <div class="audio-disc-icon">🎵</div>
           <div class="media-title">${this.escape(p.Name)}</div>
           ${p.Content ? `<audio controls autoplay src="${p.Content}"></audio>` : `
             <div class="file-card-size">${this.escape(p.Size || 'Remote audio')}</div>
-            <div class="file-card-extra">${this.escape(p.ExtraInfo || 'Audio preview unavailable â€” click Open to play from the connected location.')}</div>
+            <div class="file-card-extra">${this.escape(p.ExtraInfo || 'Audio preview unavailable — click Open to play from the connected location.')}</div>
           `}
         </div>
       `;
@@ -657,10 +657,10 @@ class PreviewController {
       this.box.innerHTML = `
         <div class="media-player-box">
           ${p.Content ? `<video controls autoplay src="${p.Content}"></video>` : `
-            <div style="font-size:40px;margin-bottom:10px">ðŸŽ¬</div>
+            <div style="font-size:40px;margin-bottom:10px">🎬</div>
             <div class="media-title">${this.escape(p.Name)}</div>
             <div class="file-card-size">${this.escape(p.Size || 'Remote video')}</div>
-            <div class="file-card-extra">${this.escape(p.ExtraInfo || 'Video preview unavailable â€” click Open to play from the connected location.')}</div>
+            <div class="file-card-extra">${this.escape(p.ExtraInfo || 'Video preview unavailable — click Open to play from the connected location.')}</div>
           `}
         </div>
       `;
@@ -675,7 +675,7 @@ class PreviewController {
     } else if (p.Kind === 'folder') {
       this.box.innerHTML = `
         <div class="folder-info-box">
-          ${p.IconBase64 ? `<img class="folder-large-icon" src="${p.IconBase64}">` : `<div class="folder-badge">ðŸ“</div>`}
+          ${p.IconBase64 ? `<img class="folder-large-icon" src="${p.IconBase64}">` : `<div class="folder-badge">📁</div>`}
           <div class="folder-title">${this.escape(p.Name)}</div>
           <div class="folder-details">${this.escape(p.ExtraInfo || p.Size || 'Folder')}</div>
         </div>
@@ -714,11 +714,11 @@ class PreviewController {
 
   clear() {
     this.nameEl.textContent = 'No selection';
-    this.typeEl.textContent = 'â€”';
-    this.sizeEl.textContent = 'â€”';
-    this.pathEl.textContent = 'â€”';
-    if (this.createdEl) this.createdEl.textContent = 'â€”';
-    if (this.modEl) this.modEl.textContent = 'â€”';
+    this.typeEl.textContent = '—';
+    this.sizeEl.textContent = '—';
+    this.pathEl.textContent = '—';
+    if (this.createdEl) this.createdEl.textContent = '—';
+    if (this.modEl) this.modEl.textContent = '—';
     this.box.innerHTML = '<span class="preview-placeholder">Select a file to preview</span>';
   }
 }
@@ -772,7 +772,7 @@ function updateCtxPinBtn() {
   const btn = $('ctxPinBtn');
   const cur = grid.items[grid.selected];
   if (btn && cur) {
-    btn.textContent = isFavorite(cur.Path) ? 'â˜… Unpin from Favorites' : 'â­ Pin to Favorites';
+    btn.textContent = isFavorite(cur.Path) ? '★ Unpin from Favorites' : '⭐ Pin to Favorites';
   }
 }
 
@@ -786,7 +786,7 @@ window.toggleFavorite = () => {
   } else {
     favorites.unshift(path);
     if (favorites.length > 500) favorites.length = 500;
-    window.showToast('â­ Added to favorites');
+    window.showToast('⭐ Added to favorites');
   }
   saveFavorites();
   updateCtxPinBtn();
@@ -794,7 +794,7 @@ window.toggleFavorite = () => {
 
 window.showFavorites = () => {
   if (!favorites.length) {
-    window.showToast('No favorites yet â€” right-click a file and choose "Pin to Favorites"');
+    window.showToast('No favorites yet — right-click a file and choose "Pin to Favorites"');
     return;
   }
   // Search for all favorite paths via a special query marker
@@ -813,7 +813,7 @@ window.showFavorites = () => {
   });
 };
 
-// Feature #15: large file finder â€” files â‰¥ 1 GB
+// Feature #15: large file finder — files ≥ 1 GB
 window.findLargeFiles = () => {
   $('q').value = 'size:>1gb';
   $('q').focus();
@@ -859,7 +859,7 @@ function applyTheme(theme) {
   document.body.classList.toggle('dark-theme', theme === 'dark');
   try { localStorage.setItem(THEME_KEY, theme); } catch { }
   const btn = $('themeToggle');
-  if (btn) btn.textContent = theme === 'dark' ? 'â˜€ï¸ Light' : 'ðŸŒ™ Dark';
+  if (btn) btn.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
 }
 window.toggleTheme = () => {
   const dark = document.body.classList.contains('dark-theme');
@@ -919,8 +919,8 @@ function renderSearchHistory() {
   }
   el.innerHTML = searchHistory.map(h =>
     `<div class="history-item" onclick="window.applySearchPreset('${h.replace(/'/g, "\\'")}')" title="${h}">
-       <span class="history-icon">ðŸ•˜</span><span class="history-text">${grid.escapeHtml(h)}</span>
-       <button class="history-del" onclick="event.stopPropagation();window.removeSearchHistory('${h.replace(/'/g, "\\'")}')" title="Remove">âœ•</button>
+       <span class="history-icon">🕘</span><span class="history-text">${grid.escapeHtml(h)}</span>
+       <button class="history-del" onclick="event.stopPropagation();window.removeSearchHistory('${h.replace(/'/g, "\\'")}')" title="Remove">✕</button>
      </div>`
   ).join('');
 }
@@ -1105,7 +1105,7 @@ window.togglePreview = () => {
   preview.toggle();
   const active = preview.isOpen();
   const check = $('menuCheckPreview');
-  if (check) check.textContent = active ? 'âœ“' : '';
+  if (check) check.textContent = active ? '✓' : '';
   const btn = $('previewBtn');
   if (btn) btn.classList.toggle('active', active);
 };
@@ -1146,7 +1146,7 @@ window.boot = (payload) => {
     btn.classList.toggle('active', btn.dataset.filter === currentKind);
   });
   ['sn', 'sp', 'st'].forEach(id => { const el = $(id); if (el) el.textContent = ''; });
-  const indicator = currentDesc ? 'â–¼' : 'â–²';
+  const indicator = currentDesc ? '▼' : '▲';
   if (currentSort === 'name' && $('sn')) $('sn').textContent = indicator;
   if (currentSort === 'path' && $('sp')) $('sp').textContent = indicator;
   if (currentSort === 'type' && $('st')) $('st').textContent = indicator;
@@ -1197,7 +1197,7 @@ window.cancelIndexing = () => {
   $('status').textContent = 'Cancelling indexing...';
   const btn = $('indexCancelBtn');
   if (btn) {
-    btn.textContent = 'Cancellingâ€¦';
+    btn.textContent = 'Cancelling…';
     btn.disabled = true;
   }
 };
@@ -1205,7 +1205,7 @@ window.cancelIndexing = () => {
 window.indexCancelled = () => {
   const btn = $('indexCancelBtn');
   if (btn) {
-    btn.textContent = 'âœ• Cancel indexing';
+    btn.textContent = '✕ Cancel indexing';
     btn.disabled = false;
   }
   $('status').textContent = 'Indexing cancelled';
@@ -1310,14 +1310,14 @@ window.toggleUpdateModal = (force) => {
 
 window.checkUpdate = () => {
   const btn = $('updatePillBtn');
-  if (btn) btn.textContent = 'âŸ³ Checkingâ€¦';
+  if (btn) btn.textContent = '⟳ Checking…';
   window.toggleUpdateModal(true);
   $('updateModalTitle').textContent = 'Checking for Updates';
-  $('updateModalSubtitle').textContent = 'Connecting to GitHub repositoryâ€¦';
+  $('updateModalSubtitle').textContent = 'Connecting to GitHub repository…';
   $('updateModalBody').innerHTML = `
-    <div style="text-align:center;padding:24px;color:#666">
+    <div class="update-state update-state-checking">
       <div class="spinner"></div>
-      <p style="margin-top:12px;font-size:13px">Checking latest release on GitHubâ€¦</p>
+      <p class="update-state-text">Checking the latest release on GitHub…</p>
     </div>
   `;
   window.ipc.postMessage({ action: 'check_update' });
@@ -1329,7 +1329,7 @@ window.updateCheckResult = (res) => {
 
   if (res.UpdateAvailable) {
     if (pillBtn) {
-      pillBtn.textContent = `â˜… Update v${res.LatestVersion}`;
+      pillBtn.textContent = `★ Update v${res.LatestVersion}`;
       pillBtn.style.background = '#107c41';
       pillBtn.style.color = '#fff';
     }
@@ -1343,15 +1343,13 @@ window.updateCheckResult = (res) => {
     $('updateModalTitle').textContent = 'Update Available!';
     $('updateModalSubtitle').textContent = `AizenRex Search-man v${res.LatestVersion} is ready to install`;
     $('updateModalBody').innerHTML = `
-      <div style="padding:10px 0">
-        <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:12px;margin-bottom:14px">
-          <strong style="color:#166534;font-size:13px">AizenRex Search-man v${res.LatestVersion}</strong>
-          <div style="font-size:11.5px;color:#15803d;margin-top:2px">Your installed version: v${res.CurrentVersion}</div>
+      <div class="update-state update-state-available">
+        <div class="update-version-card">
+          <strong class="update-version-name">AizenRex Search-man v${grid.escapeHtml(res.LatestVersion)}</strong>
+          <div class="update-version-sub">Installed: v${grid.escapeHtml(res.CurrentVersion || '')}</div>
         </div>
-        ${res.ReleaseNotes ? `<div style="max-height:180px;overflow-y:auto;background:#f8fafc;padding:10px;border-radius:4px;border:1px solid #e2e8f0;font-size:11.5px;white-space:pre-wrap;line-height:1.5">${grid.escapeHtml(res.ReleaseNotes)}</div>` : ''}
-        <div style="margin-top:14px;font-size:12px;color:#475569">
-          Click below to visit the release page, download the installer, or run the in-place updater.
-        </div>
+        ${res.ReleaseNotes ? `<div class="update-notes">${grid.escapeHtml(res.ReleaseNotes)}</div>` : ''}
+        <p class="update-state-text">Download the installer below, or open the release page for the portable build.</p>
       </div>
     `;
     $('updateModalFooter').innerHTML = `
@@ -1360,17 +1358,18 @@ window.updateCheckResult = (res) => {
     `;
   } else {
     if (pillBtn) {
-      pillBtn.textContent = 'âœ“ Up to Date';
-      setTimeout(() => { if (pillBtn) pillBtn.textContent = 'âŸ³ Updates'; }, 4000);
+      pillBtn.textContent = '✓ Up to Date';
+      setTimeout(() => { if (pillBtn) pillBtn.textContent = '⟳ Updates'; }, 4000);
     }
 
     $('updateModalTitle').textContent = 'You are Up to Date!';
     $('updateModalSubtitle').textContent = `AizenRex Search-man v${res.CurrentVersion} is the newest release.`;
     $('updateModalBody').innerHTML = `
-      <div style="text-align:center;padding:20px 10px;color:#166534">
-        <div style="font-size:36px;margin-bottom:8px">âœ“</div>
-        <div style="font-weight:700;font-size:14px">No updates found</div>
-        <p style="font-size:12px;color:#64748b;margin-top:6px">${grid.escapeHtml(res.Message || 'You have the latest version of AizenRex Search-man installed.')}</p>
+      <div class="update-state update-state-ok">
+        <div class="update-state-icon">✓</div>
+        <div class="update-state-title">You have the latest version</div>
+        <p class="update-state-text">${grid.escapeHtml(res.Message || 'AizenRex Search-man is up to date.')}</p>
+        <p class="update-state-note">Installed: v${grid.escapeHtml(res.CurrentVersion || '')}</p>
       </div>
     `;
     $('updateModalFooter').innerHTML = `
@@ -1457,7 +1456,7 @@ window.sortBy = (col) => {
   currentSort = col;
   saveSearchOptions();
   ['sn', 'sp', 'st'].forEach(id => { const el = $(id); if (el) el.textContent = ''; });
-  const indicator = currentDesc ? 'â–¼' : 'â–²';
+  const indicator = currentDesc ? '▼' : '▲';
   if (col === 'name') $('sn').textContent = indicator;
   if (col === 'path') $('sp').textContent = indicator;
   if (col === 'type') $('st').textContent = indicator;
@@ -1527,37 +1526,37 @@ document.querySelectorAll('.menu-item').forEach(item => {
 
 window.updateMenuStateIndicators = function() {
   const pCheck = $('menuCheckPreview');
-  if (pCheck) pCheck.textContent = $('pane')?.classList.contains('preview-on') ? 'âœ“' : '';
+  if (pCheck) pCheck.textContent = $('pane')?.classList.contains('preview-on') ? '✓' : '';
 
   const caseCheck = $('menuCheckCase');
-  if (caseCheck) caseCheck.textContent = matchCase ? 'âœ“' : '';
+  if (caseCheck) caseCheck.textContent = matchCase ? '✓' : '';
 
   const wordCheck = $('menuCheckWord');
-  if (wordCheck) wordCheck.textContent = wholeWord ? 'âœ“' : '';
+  if (wordCheck) wordCheck.textContent = wholeWord ? '✓' : '';
 
   const pathCheck = $('menuCheckPath');
-  if (pathCheck) pathCheck.textContent = matchPath ? 'âœ“' : '';
+  if (pathCheck) pathCheck.textContent = matchPath ? '✓' : '';
 
   const regexCheck = $('menuCheckRegex');
-  if (regexCheck) regexCheck.textContent = regexMode ? 'âœ“' : '';
+  if (regexCheck) regexCheck.textContent = regexMode ? '✓' : '';
 
   const sortName = $('menuSortName');
-  if (sortName) sortName.textContent = currentSort === 'name' ? 'âœ“' : '';
+  if (sortName) sortName.textContent = currentSort === 'name' ? '✓' : '';
 
   const sortPath = $('menuSortPath');
-  if (sortPath) sortPath.textContent = currentSort === 'path' ? 'âœ“' : '';
+  if (sortPath) sortPath.textContent = currentSort === 'path' ? '✓' : '';
 
   const sortType = $('menuSortType');
-  if (sortType) sortType.textContent = currentSort === 'type' ? 'âœ“' : '';
+  if (sortType) sortType.textContent = currentSort === 'type' ? '✓' : '';
 
   const mvList = $('menuViewList');
-  if (mvList) mvList.textContent = grid.viewMode === 'list' ? 'âœ“' : '';
+  if (mvList) mvList.textContent = grid.viewMode === 'list' ? '✓' : '';
 
   const mvCard = $('menuViewCard');
-  if (mvCard) mvCard.textContent = grid.viewMode === 'card' ? 'âœ“' : '';
+  if (mvCard) mvCard.textContent = grid.viewMode === 'card' ? '✓' : '';
 
   const mvCompact = $('menuViewCompact');
-  if (mvCompact) mvCompact.textContent = grid.viewMode === 'compact' ? 'âœ“' : '';
+  if (mvCompact) mvCompact.textContent = grid.viewMode === 'compact' ? '✓' : '';
 };
 
 window.menuSort = function(col) {
