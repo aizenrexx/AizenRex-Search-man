@@ -1,7 +1,7 @@
 ; ==============================================================================
 ; AizenRex Search-man Professional Installer Script (Inno Setup 6)
 ; Architect & Lead Developer: Riyad (Aizen)
-; Version: 0.3.6 Professional Edition
+; Version: 0.3.8 Professional Edition
 ; ==============================================================================
 
 #define MyAppName "AizenRex Search-man"
@@ -13,13 +13,15 @@
 ; otherwise they fall back to the local development folder.
 #define MySourceRoot GetEnv('AIZEN_SOURCE_ROOT')
 #if MySourceRoot == ""
-#define MySourceRoot "H:\My Project Coding\Lindy My Boss\My Software\Searching"
+; Local builds: resolve relative to this script's own folder, so the repository
+; never has to hard-code a personal directory path.
+#define MySourceRoot "{src}"
 #endif
 
 ; Version comes from AIZEN_VERSION when set (CI/cloud build), otherwise local default.
 #define MyAppVersion GetEnv('AIZEN_VERSION')
 #if MyAppVersion == ""
-#define MyAppVersion "0.3.7"
+#define MyAppVersion "0.3.8"
 #endif
 
 #define MyAppIcon MySourceRoot + "\src\AizenSearch.App\AizenRex.ico"
