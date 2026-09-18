@@ -1,0 +1,11 @@
+﻿/target
+*.log
+*.pid
+**/bin/
+**/obj/
+**/TestResults/
+.aizen-backups/
+*.dmp
+*.bak
+.vs/
+
