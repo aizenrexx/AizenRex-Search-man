@@ -1,4 +1,4 @@
-# AizenRex Search-man v0.3.6 (.NET 9)
+# AizenRex Search-man v0.3.7 (.NET 9)
 
 An ultra-fast native Windows file search engine written in **C# (.NET 9)** with clean architecture and separate modular components.
 
