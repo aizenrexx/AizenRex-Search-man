@@ -33,6 +33,27 @@ if (window.chrome && window.chrome.webview) {
 
 const $ = (id) => document.getElementById(id);
 
+// ---------------------------------------------------------------------------
+// Version reporting: the native host pushes the running version on navigation,
+// so the window title, the badge and the About dialog are always in agreement.
+// ---------------------------------------------------------------------------
+window.appInfo = (info) => {
+  const v = (info && info.version) ? String(info.version) : '';
+  if (!v) return;
+
+  document.title = `AizenRex Search-man v${v} Professional`;
+
+  const brand = document.querySelector('.brand-logo-wrap');
+  if (brand) brand.title = `AizenRex Search-man v${v} Professional`;
+
+  const badge = $('buildVersion');
+  if (badge) badge.textContent = `v${v} (.NET 9)`;
+
+  const about = $('aboutVersion');
+  if (about) about.textContent = `v${v} Professional Edition (.NET 9 + WebView2)`;
+};
+
+
 function svgDataUri(svg) {
   return 'data:image/svg+xml;base64,' + btoa(svg);
 }
