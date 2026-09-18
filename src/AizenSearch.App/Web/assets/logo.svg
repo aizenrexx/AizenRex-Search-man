@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260" role="img" aria-labelledby="title desc">
+  <title>AizenRex Search-man</title>
+  <desc>Search magnifier fused with a rex crest.</desc>
+  <defs>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#52E8FF"/><stop offset="1" stop-color="#0879FF"/></linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A66BFF"/><stop offset="1" stop-color="#5520E8"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g transform="translate(28 22)">
+    <path d="M98 18 116 62 156 35 145 80 188 70 154 105 178 132 135 123 108 167 86 124 42 138 67 104 30 78 74 83Z" fill="url(#violet)" stroke="#C6B4FF" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="106" cy="111" r="78" fill="#0A1020" stroke="url(#cyan)" stroke-width="18" filter="url(#glow)"/>
+    <circle cx="106" cy="111" r="55" fill="none" stroke="#1F385B" stroke-width="3"/>
+    <path d="M161 164 222 225" stroke="url(#cyan)" stroke-width="19" stroke-linecap="round"/>
+    <path d="M77 91h49l18 18-18 18H77m0-18h36" fill="none" stroke="#EAFBFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77 91 95 75v32" fill="none" stroke="#EAFBFF" stroke-width="7" stroke-linejoin="round"/>
+    <circle cx="54" cy="72" r="8" fill="#52E8FF"/>
+  </g>
+  <text x="280" y="126" fill="#F4F8FF" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-2">Aizen<tspan fill="#52E8FF">Rex</tspan></text>
+  <text x="285" y="194" fill="#A66BFF" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="1">Search-man</text>
+</svg>
