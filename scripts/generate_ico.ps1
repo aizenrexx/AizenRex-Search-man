@@ -8,7 +8,7 @@ Add-Type -AssemblyName System.Drawing
 # then the local development folder.
 if (-not $OutputPath) {
     $root = $env:AIZEN_SOURCE_ROOT
-    if (-not $root) { $root = "H:\My Project Coding\Lindy My Boss\My Software\Searching" }
+    if (-not $root) { $root = Split-Path -Parent $PSScriptRoot }   # repo root, no hard-coded path
     $OutputPath = Join-Path $root "src\AizenSearch.App\AizenSearch.ico"
 }
 $outputPath = $OutputPath
