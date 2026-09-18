@@ -1,11 +1,73 @@
-﻿/target
-*.log
-*.pid
-**/bin/
-**/obj/
-**/TestResults/
-.aizen-backups/
+# ---------------------------------------------------------------------------
+# AizenRex Search-man - repository hygiene
+# Anything below must never reach the public repository.
+# ---------------------------------------------------------------------------
+
+# --- Build output -----------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+artifacts/
+Distribution/Installer/
+Distribution/*.zip
+*.pdb
 *.dmp
 *.bak
+*.tmp
+*.user
+*.suo
 .vs/
+.vscode/
+*.userprefs
 
+# --- Rust build output ------------------------------------------------------
+/target/
+**/target/
+
+# --- Test / coverage output -------------------------------------------------
+[Tt]est[Rr]esults/
+*.trx
+*.coverage
+coverage*.xml
+*.coverlet.json
+
+# --- Credentials & secrets (never commit) -----------------------------------
+*.key
+*.pem
+*.pfx
+*.p12
+*.snk
+*.jks
+*.keystore
+secrets.json
+secrets.*.json
+appsettings.Development.json
+appsettings.Local.json
+.env
+.env.*
+!.env.example
+*.secret
+*credential*
+*password*
+*token*
+!src/**/Token*.cs
+.github/token*
+Memory and Key/
+
+# --- Local / machine-specific ----------------------------------------------
+*.log
+*.pid
+.aizen-backups/
+LocalSettings/
+*.local.json
+*.local.md
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor / OS ------------------------------------------------------------
+.idea/
+*.swp
+*~
