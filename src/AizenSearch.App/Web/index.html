@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AizenRex Search-man v0.3.7 Professional</title>
+  <title>AizenRex Search-man</title>
   <link rel="stylesheet" href="css/app.css?v=6">
 </head>
 <body>
   <div class="app">
     <!-- Top Menu -->
     <nav class="menu">
-      <div class="brand-logo-wrap" title="AizenRex Search-man v0.3.7 Professional" onclick="window.toggleAbout()">
+      <div class="brand-logo-wrap" title="AizenRex Search-man" onclick="window.toggleAbout()">
         <img src="assets/logo.svg" class="brand-logo" alt="Logo">
         <span class="brand-name">AizenRex</span>
       </div>
@@ -441,7 +441,7 @@
       <div class="right">
         <button id="mftbtn" style="display:none;border:1px solid #999;background:#fafafa;height:20px;cursor:pointer" onclick="window.ipc.postMessage({action:'elevate'})">Enable MFT (Admin)</button>
         <span class="flag" id="flags"></span>
-        <span class="flag version-badge" id="buildVersion" onclick="window.toggleChangelog()" style="cursor:pointer" title="Click to view Version History & Changelog">v0.3.7 (.NET 9)</span>
+        <span class="flag version-badge" id="buildVersion" onclick="window.toggleChangelog()" style="cursor:pointer" title="Click to view Version History & Changelog">v…</span>
         <span id="totalCount">0 indexed</span>
         <span id="count">0 results</span>
         <button class="update-pill-btn" id="updatePillBtn" onclick="window.checkUpdate()" title="Check for Updates">⟳ Updates</button>
@@ -485,7 +485,7 @@
           <img src="assets/logo.svg" class="modal-logo" alt="Logo">
           <div>
             <h2 class="modal-app-name">AizenRex Search-man</h2>
-            <div class="modal-version">v0.3.7 Professional Edition (.NET 9 + WebView2)</div>
+            <div class="modal-version" id="aboutVersion">Professional Edition (.NET 9 + WebView2)</div>
           </div>
         </div>
         <button class="modal-close-btn" onclick="window.toggleAbout()">&times;</button>
@@ -546,11 +546,26 @@
       </div>
       <div class="modal-body changelog-body">
         
-        <!-- v0.3.7 Card -->
+        <!-- v0.3.8 Card -->
         <div class="changelog-card current-release">
           <div class="changelog-badge-row">
-            <span class="changelog-version">v0.3.7</span>
+            <span class="changelog-version">v0.3.8</span>
             <span class="badge-current">Current Release</span>
+            <span class="changelog-date">September 2026</span>
+          </div>
+          <h4 class="changelog-headline">One Version Number Everywhere, Trusted Install &amp; Safer Repository</h4>
+          <ul class="changelog-list">
+            <li><strong>Single Version Source:</strong> The title bar, the version badge and the About dialog used to carry their own hard-coded version and could disagree with each other. They now all read the running version from one place, so they can never drift apart again.</li>
+            <li><strong>Build Fails on a Version Mismatch:</strong> The release pipeline now stops with an error if the app version and the release version disagree, instead of shipping a build that quietly cannot update itself.</li>
+            <li><strong>Installer Trust &amp; Verification:</strong> Installation steps, checksum verification and a clear note about the Windows "unrecognized app" warning were added to the release page and README.</li>
+            <li><strong>Repository Hardened:</strong> A comprehensive ignore ruleset keeps build output, logs, credentials, certificates, tokens and machine-specific files out of the public repository. Personal directory paths were removed from the build and installer scripts.</li>
+          </ul>
+        </div>
+
+        <!-- v0.3.7 Card -->
+        <div class="changelog-card">
+          <div class="changelog-badge-row">
+            <span class="changelog-version">v0.3.7</span>
             <span class="changelog-date">September 2026</span>
           </div>
           <h4 class="changelog-headline">Text Rendering Fix, Self-Check & Cloud Release Pipeline</h4>
