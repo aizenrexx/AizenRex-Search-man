@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AizenRex Search-man v0.3.6 Professional</title>
-  <link rel="stylesheet" href="css/app.css?v=5">
+  <title>AizenRex Search-man v0.3.7 Professional</title>
+  <link rel="stylesheet" href="css/app.css?v=6">
 </head>
 <body>
   <div class="app">
     <!-- Top Menu -->
     <nav class="menu">
-      <div class="brand-logo-wrap" title="AizenRex Search-man v0.3.6 Professional" onclick="window.toggleAbout()">
+      <div class="brand-logo-wrap" title="AizenRex Search-man v0.3.7 Professional" onclick="window.toggleAbout()">
         <img src="assets/logo.svg" class="brand-logo" alt="Logo">
         <span class="brand-name">AizenRex</span>
       </div>
@@ -441,7 +441,7 @@
       <div class="right">
         <button id="mftbtn" style="display:none;border:1px solid #999;background:#fafafa;height:20px;cursor:pointer" onclick="window.ipc.postMessage({action:'elevate'})">Enable MFT (Admin)</button>
         <span class="flag" id="flags"></span>
-        <span class="flag version-badge" id="buildVersion" onclick="window.toggleChangelog()" style="cursor:pointer" title="Click to view Version History & Changelog">v0.3.6 (.NET 9)</span>
+        <span class="flag version-badge" id="buildVersion" onclick="window.toggleChangelog()" style="cursor:pointer" title="Click to view Version History & Changelog">v0.3.7 (.NET 9)</span>
         <span id="totalCount">0 indexed</span>
         <span id="count">0 results</span>
         <button class="update-pill-btn" id="updatePillBtn" onclick="window.checkUpdate()" title="Check for Updates">⟳ Updates</button>
@@ -485,7 +485,7 @@
           <img src="assets/logo.svg" class="modal-logo" alt="Logo">
           <div>
             <h2 class="modal-app-name">AizenRex Search-man</h2>
-            <div class="modal-version">v0.3.6 Professional Edition (.NET 9 + WebView2)</div>
+            <div class="modal-version">v0.3.7 Professional Edition (.NET 9 + WebView2)</div>
           </div>
         </div>
         <button class="modal-close-btn" onclick="window.toggleAbout()">&times;</button>
@@ -546,11 +546,26 @@
       </div>
       <div class="modal-body changelog-body">
         
-        <!-- v0.3.6 Card -->
+        <!-- v0.3.7 Card -->
         <div class="changelog-card current-release">
           <div class="changelog-badge-row">
-            <span class="changelog-version">v0.3.6</span>
+            <span class="changelog-version">v0.3.7</span>
             <span class="badge-current">Current Release</span>
+            <span class="changelog-date">September 2026</span>
+          </div>
+          <h4 class="changelog-headline">Text Rendering Fix, Self-Check & Cloud Release Pipeline</h4>
+          <ul class="changelog-list">
+            <li><strong>Text Rendering Fixed:</strong> Repaired corrupted character sequences in the interface that displayed as broken glyphs, and split the interface font stack so symbol pictograms are drawn by the system symbol/emoji font instead of being mis-rendered in the fallback font.</li>
+            <li><strong>Whole-Project Bug Sweep:</strong> Verified every script block parses, every interface element referenced by the code exists, and no duplicate identifiers remain. Layout, colors and dialog legibility were re-checked in both light and dark themes.</li>
+            <li><strong>In-App Update Check Hardened:</strong> The updater now reports clearly when the release server is unreachable, and the update dialog wording and contrast were corrected.</li>
+            <li><strong>Automated Cloud Build &amp; Release:</strong> Tagging a version now builds, tests and packages the app on GitHub's own machines and publishes the installer and portable build automatically - no local machine required.</li>
+          </ul>
+        </div>
+
+        <!-- v0.3.6 Card -->
+        <div class="changelog-card">
+          <div class="changelog-badge-row">
+            <span class="changelog-version">v0.3.6</span>
             <span class="changelog-date">September 2026</span>
           </div>
           <h4 class="changelog-headline">Lightweight Optimization, Search Performance & Auto-Update</h4>
