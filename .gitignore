@@ -71,3 +71,11 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+# --- Distribution/Portable build output (the pipeline rebuilds these) -------
+# The Web/ assets and the two .json files stay tracked; the compiled binaries
+# are rebuilt from source by the release workflow and must never be committed.
+Distribution/Portable/*.dll
+Distribution/Portable/*.exe
+Distribution/Portable/*.pdb
+Distribution/Portable/runtimes/
