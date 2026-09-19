@@ -15,7 +15,7 @@
 #if MySourceRoot == ""
 ; Local builds: resolve relative to this script's own folder, so the repository
 ; never has to hard-code a personal directory path.
-#define MySourceRoot "{src}"
+#define MySourceRoot SourcePath
 #endif
 
 ; Version comes from AIZEN_VERSION when set (CI/cloud build), otherwise local default.
