@@ -89,7 +89,7 @@ Never paste a token into a chat, an issue, or a file.
 Exactly one request: an update check against
 
 ```
-https://api.github.com/repos/aizenrexx/AizenSearch/releases/latest
+https://api.github.com/repos/aizenrexx/AizenRex-Search-man/releases/latest
 ```
 
 It reads the version tag and the download link and nothing else. No telemetry, no analytics, no account, no upload. The index and settings stay in `%LOCALAPPDATA%\AizenSearch` on your own machine.
