@@ -73,6 +73,18 @@ The result list is virtualised — a query matching hundreds of thousands of fil
 </td></tr>
 </table>
 
+### From keystroke to painted row
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/search-flow-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/search-flow.svg">
+  <img src="docs/assets/search-flow.svg" alt="Search flow: you type, the query is parsed, the index is searched, results are ranked, rows are returned over IPC, and only the visible rows are drawn." width="100%">
+</picture>
+</div>
+
+After the index is warm, every one of those steps runs **in memory**. The disk is touched only when the filesystem watcher reports a change.
+
 ---
 
 ## 📦 Download & install
@@ -210,6 +222,16 @@ AizenRex-Search-man/
 ├── docs/                          Architecture · syntax · build · security
 └── .github/workflows/release.yml  Cloud build and release pipeline
 ```
+
+### How the pieces fit together
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/architecture-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/architecture.svg">
+  <img src="docs/assets/architecture.svg" alt="Architecture: the WPF shell hosts WebView2, the IPC bridge connects it to the engine, and the engine reads the NTFS MFT, writes a binary index cache and checks GitHub for updates." width="100%">
+</picture>
+</div>
 
 📖 **Guided tour of the codebase → [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
 
