@@ -5,8 +5,8 @@
 **An ultra-fast native file search engine for Windows.**
 Built on the NTFS Master File Table, driven by a modern web interface, packaged as a single desktop app.
 
-[![Build and Release](https://github.com/aizenrexx/AizenSearch/actions/workflows/release.yml/badge.svg)](https://github.com/aizenrexx/AizenSearch/actions/workflows/release.yml)
-[![Latest release](https://img.shields.io/github/v/release/aizenrexx/AizenSearch)](https://github.com/aizenrexx/AizenSearch/releases/latest)
+[![Build and Release](https://github.com/aizenrexx/AizenRex-Search-man/actions/workflows/release.yml/badge.svg)](https://github.com/aizenrexx/AizenRex-Search-man/actions/workflows/release.yml)
+[![Latest release](https://img.shields.io/github/v/release/aizenrexx/AizenRex-Search-man)](https://github.com/aizenrexx/AizenRex-Search-man/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-blue)](license.txt)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20x64-lightgrey)]()
 
@@ -35,7 +35,7 @@ It is a **.NET 9 desktop application** — no service to install, no background 
 
 ## Download & install
 
-Grab the newest build from the [**Releases**](https://github.com/aizenrexx/AizenSearch/releases/latest) page.
+Grab the newest build from the [**Releases**](https://github.com/aizenrexx/AizenRex-Search-man/releases/latest) page.
 
 | File | What it is |
 |---|---|
@@ -178,6 +178,6 @@ The user-facing product is **AizenRex Search-man**. Internal assembly names, nam
 
 <div align="center">
 
-**Built by Riyad (Aizen)** · [Report an issue](https://github.com/aizenrexx/AizenSearch/issues) · [License](license.txt)
+**Built by Riyad (Aizen)** · [Report an issue](https://github.com/aizenrexx/AizenRex-Search-man/issues) · [License](license.txt)
 
 </div>
