@@ -6,9 +6,9 @@ namespace AizenSearch.Core.Services;
 
 public static class UpdateService
 {
-    public const string CurrentVersion = "0.3.8";
+    public const string CurrentVersion = "0.3.9";
     public const string RepoOwner = "aizenrexx";
-    public const string RepoName = "AizenSearch";
+    public const string RepoName = "AizenRex-Search-man";
 
     private static readonly HttpClient Client = new()
     {
