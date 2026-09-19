@@ -12,6 +12,14 @@ AizenSearch.Core (indexing, search, storage, services)
 AizenSearch.Core.Tests (xUnit)
 ```
 
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/architecture-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/architecture.svg">
+  <img src="assets/architecture.svg" alt="AizenRex Search-man architecture diagram" width="100%">
+</picture>
+</div>
+
 ---
 
 ## `src/AizenSearch.Core` — the engine
@@ -100,6 +108,16 @@ These run on every release build; a failing test blocks the release.
 ---
 
 ## How a search flows
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/search-flow-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/search-flow.svg">
+  <img src="assets/search-flow.svg" alt="Search flow diagram" width="100%">
+</picture>
+</div>
+
+
 
 1. The user types — `app.js` posts `{action: "search", ...}` to the bridge.
 2. `IpcBridge` deserialises it into a `SearchQuery` and calls `QueryParser.Parse`.
