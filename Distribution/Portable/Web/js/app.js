@@ -1375,7 +1375,7 @@ window.updateCheckResult = (res) => {
     `;
     $('updateModalFooter').innerHTML = `
       <button class="modal-secondary-btn" onclick="window.toggleUpdateModal(false)">Later</button>
-      <button class="modal-action-btn" onclick="window.ipc.postMessage({action:'open',path:'${res.DownloadUrl || 'https://github.com/aizenrexx/AizenSearch/releases'}'})">Download v${res.LatestVersion}</button>
+      <button class="modal-action-btn" onclick="window.ipc.postMessage({action:'open',path:'${res.DownloadUrl || 'https://github.com/aizenrexx/AizenRex-Search-man/releases'}'})">Download v${res.LatestVersion}</button>
     `;
   } else {
     if (pillBtn) {
