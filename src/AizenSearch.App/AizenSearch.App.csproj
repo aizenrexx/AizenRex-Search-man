@@ -21,9 +21,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>AizenRex.ico</ApplicationIcon>
-    <Version>0.3.8</Version>
-    <AssemblyVersion>0.3.8.0</AssemblyVersion>
-    <FileVersion>0.3.8.0</FileVersion>
+    <Version>0.3.9</Version>
+    <AssemblyVersion>0.3.9.0</AssemblyVersion>
+    <FileVersion>0.3.9.0</FileVersion>
     <Product>AizenRex Search-man</Product>
     <Company>Riyad Workspace</Company>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
