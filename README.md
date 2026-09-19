@@ -22,7 +22,7 @@ Built directly on the NTFS Master File Table, driven by a modern web interface, 
 
 <br>
 
-[**Download**](#-download--install) &nbsp;·&nbsp; [**Features**](#-features) &nbsp;·&nbsp; [**Search syntax**](docs/SEARCH-SYNTAX.md) &nbsp;·&nbsp; [**Architecture**](docs/ARCHITECTURE.md) &nbsp;·&nbsp; [**Build & release**](docs/BUILD-AND-RELEASE.md)
+[**Download**](#-download--install) &nbsp;·&nbsp; [**Features**](#-features) &nbsp;·&nbsp; [**Search syntax**](docs/SEARCH-SYNTAX.md) &nbsp;·&nbsp; [**Architecture**](docs/ARCHITECTURE.md) &nbsp;·&nbsp; [**Manual**](docs/manual/) &nbsp;·&nbsp; [**Build & release**](docs/BUILD-AND-RELEASE.md)
 
 </div>
 
@@ -219,7 +219,7 @@ AizenRex-Search-man/
 ├── Distribution/Portable/         Packaged portable build
 ├── scripts/                       Icon generation and screenshot helpers
 ├── legacy_rust/                   Archived original Rust implementation
-├── docs/                          Architecture · syntax · build · security
+├── docs/                          Architecture · syntax · build · security · manual
 └── .github/workflows/release.yml  Cloud build and release pipeline
 ```
 
@@ -263,6 +263,27 @@ git push origin v0.3.9
 GitHub Actions then restores, builds, runs the full test suite, publishes the portable build, packages the ZIP, compiles the installer, and publishes the release. You can also run it manually from the **Actions** tab.
 
 📖 **Full details, including the version rules → [docs/BUILD-AND-RELEASE.md](docs/BUILD-AND-RELEASE.md)**
+
+---
+
+## 📚 The complete manual
+
+Everything about this software — how it works, how every file fits together, how to change any part of it, how to build and release, and how to use it — lives in **[`docs/manual/`](docs/manual/)**.
+
+<div align="center">
+
+| # | Chapter | Read it if you want to… |
+|:---|:---|:---|
+| **00** | [**Start here**](docs/manual/00-START-HERE.md) | know how to use the manual and the rules you must not break |
+| **01** | [**How it works**](docs/manual/01-HOW-IT-WORKS.md) | understand the whole system, in plain language |
+| **02** | [**The codebase**](docs/manual/02-THE-CODEBASE.md) | find which file owns the thing you want to change |
+| **03** | [**How to modify**](docs/manual/03-HOW-TO-MODIFY.md) | make a change — 15 recipes, from a colour to a new search operator |
+| **04** | [**Build, test and release**](docs/manual/04-BUILD-TEST-RELEASE.md) | build it, test it, or publish a release |
+| **05** | [**User guide**](docs/manual/05-USER-GUIDE.md) | use the app — every menu, shortcut, query, and fix |
+
+</div>
+
+It is written to be read by **anyone** — a person new to the project, or an AI assistant picking it up cold — and it is kept in the repository so it never drifts away from the code.
 
 ---
 
@@ -319,6 +340,15 @@ The user-facing product is **AizenRex Search-man**, but internal assembly names,
 <br>
 
 The published build is framework-dependent, so it needs the [.NET 9 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0). You can also build it self-contained from source if you need a standalone copy.
+
+</details>
+
+<details>
+<summary><b>Where do I start if I want to change the code?</b></summary>
+
+<br>
+
+Read **[`docs/manual/00-START-HERE.md`](docs/manual/00-START-HERE.md)** first, then the codebase map in **[`docs/manual/02-THE-CODEBASE.md`](docs/manual/02-THE-CODEBASE.md)**, then find the closest recipe in **[`docs/manual/03-HOW-TO-MODIFY.md`](docs/manual/03-HOW-TO-MODIFY.md)**. Those three cover almost everything, including the rules that are easy to break without noticing.
 
 </details>
 
