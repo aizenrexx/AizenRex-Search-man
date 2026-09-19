@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="AizenRex Search-man — ultra-fast native Windows file search engine">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="0.55" stop-color="#0d1628"/>
+      <stop offset="1" stop-color="#121e36"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00a2ed"/>
+      <stop offset="1" stop-color="#002952"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c285ff"/>
+      <stop offset="1" stop-color="#2d0b66"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffd338"/>
+      <stop offset="1" stop-color="#e81123"/>
+    </linearGradient>
+    <linearGradient id="prism" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#80eaff"/>
+      <stop offset="1" stop-color="#005a9e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00a2ed" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#00a2ed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7a3cff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#7a3cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00a2ed" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#c285ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#00a2ed" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="340" fill="url(#bg)"/>
+  <circle cx="190" cy="170" r="215" fill="url(#glow)"/>
+  <circle cx="205" cy="160" r="150" fill="url(#glow2)"/>
+
+  <!-- application mark -->
+  <g transform="translate(82,58) scale(0.86)">
+    <ellipse cx="124" cy="132" rx="92" ry="92" fill="url(#ring)"/>
+    <ellipse cx="115" cy="95" rx="65" ry="65" fill="url(#violet)"/>
+    <ellipse cx="124" cy="130" rx="48" ry="48" fill="#131b26"/>
+    <polygon points="122,78 88,148 156,148" fill="url(#prism)"/>
+    <polygon points="122,104 108,136 136,136" fill="#131b26"/>
+    <line x1="96" y1="130" x2="148" y2="130" stroke="url(#amber)" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="96" cy="80" r="8" fill="#ffffff" fill-opacity="0.9"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="352" y="152" font-family="'Segoe UI', 'Segoe UI Variable Text', system-ui, -apple-system, sans-serif"
+        font-size="62" font-weight="700" fill="#ffffff" letter-spacing="-1.2">AizenRex <tspan fill="#6cc7ff">Search-man</tspan></text>
+
+  <!-- tagline -->
+  <text x="354" y="203" font-family="'Segoe UI', system-ui, -apple-system, sans-serif"
+        font-size="23" fill="#93a7c0" letter-spacing="0.1">Ultra-fast native Windows file search &amp; indexing engine</text>
+
+  <rect x="354" y="228" width="560" height="2.5" rx="1.25" fill="url(#rule)"/>
+
+  <!-- capability pills -->
+  <g font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">
+    <rect x="354" y="252" width="122" height="38" rx="19" fill="#0f2036" stroke="#1d4b73" stroke-width="1.4"/>
+    <text x="415" y="277" fill="#7fd0ff" text-anchor="middle">NTFS MFT</text>
+
+    <rect x="488" y="252" width="104" height="38" rx="19" fill="#0f2036" stroke="#2a3f63" stroke-width="1.4"/>
+    <text x="540" y="277" fill="#b9a6ff" text-anchor="middle">.NET 9</text>
+
+    <rect x="604" y="252" width="134" height="38" rx="19" fill="#0f2036" stroke="#2a3f63" stroke-width="1.4"/>
+    <text x="671" y="277" fill="#9fb6d0" text-anchor="middle">WebView2</text>
+
+    <rect x="750" y="252" width="196" height="38" rx="19" fill="#0f2036" stroke="#2a3f63" stroke-width="1.4"/>
+    <text x="848" y="277" fill="#9fb6d0" text-anchor="middle">Windows 10 / 11 x64</text>
+  </g>
+</svg>
