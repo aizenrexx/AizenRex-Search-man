@@ -6,7 +6,7 @@ Thanks for taking a look. This is a personal project, so the most useful thing y
 
 ## Before you start
 
-- **Bugs and feature requests** → [open an issue](https://github.com/aizenrexx/AizenSearch/issues). Say what you expected, what happened, and which version you are on.
+- **Bugs and feature requests** → [open an issue](https://github.com/aizenrexx/AizenRex-Search-man/issues). Say what you expected, what happened, and which version you are on.
 - **Security problems** → follow [SECURITY.md](SECURITY.md), not a public issue.
 
 ---
@@ -14,7 +14,7 @@ Thanks for taking a look. This is a personal project, so the most useful thing y
 ## Getting set up
 
 ```powershell
-git clone https://github.com/aizenrexx/AizenSearch.git
+git clone https://github.com/aizenrexx/AizenRex-Search-man.git
 cd AizenSearch
 dotnet restore AizenSearch.sln
 dotnet build   AizenSearch.sln -c Release
