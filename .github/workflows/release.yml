@@ -1,6 +1,6 @@
 name: Build and Release
 
-# Tag a commit (e.g. `git tag v0.3.8 && git push origin v0.3.8`) and GitHub builds,
+# Tag a commit (e.g. `git tag v0.3.9 && git push origin v0.3.9`) and GitHub builds,
 # tests, packages and publishes the release entirely in the cloud — no local PC needed.
 # Can also be run manually from the Actions tab (Run workflow).
 
@@ -11,9 +11,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to build, without the leading v (e.g. 0.3.8)'
+        description: 'Version to build, without the leading v (e.g. 0.3.9)'
         required: true
-        default: '0.3.8'
+        default: '0.3.9'
 
 permissions:
   contents: write
@@ -40,7 +40,7 @@ jobs:
           } else {
             $v = '${{ github.event.inputs.version }}'
           }
-          if ($v -notmatch '^\d+\.\d+\.\d+$') { throw "Invalid version '$v' — expected something like 0.3.8" }
+          if ($v -notmatch '^\d+\.\d+\.\d+$') { throw "Invalid version '$v' — expected something like 0.3.9" }
           "version=$v" >> $env:GITHUB_OUTPUT
           Write-Host "Building AizenRex Search-man v$v"
 
