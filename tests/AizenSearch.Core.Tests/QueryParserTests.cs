@@ -30,7 +30,7 @@ public class QueryParserTests
         var parsed = QueryParser.Parse(query);
 
         Assert.NotNull(parsed.WildcardRegex);
-        Assert.True(parsed.WildcardRegex.IsMatch("CheraxLoader.exe"));
-        Assert.False(parsed.WildcardRegex.IsMatch("CheraxLoader.txt"));
+        Assert.Matches(parsed.WildcardRegex, "CheraxLoader.exe");
+        Assert.DoesNotMatch(parsed.WildcardRegex, "CheraxLoader.txt");
     }
 }

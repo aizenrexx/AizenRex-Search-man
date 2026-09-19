@@ -83,7 +83,7 @@ public partial class App : Application
                         if (args.Length > 0)
                         {
                             // Marshal to the UI thread so MainWindow can react safely.
-                            Dispatcher.BeginInvoke(() => SecondInstanceArgs?.Invoke(args));
+                            _ = Dispatcher.BeginInvoke(() => SecondInstanceArgs?.Invoke(args));
                         }
                     }
                 }
