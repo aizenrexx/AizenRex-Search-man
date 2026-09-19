@@ -1,12 +1,12 @@
 ; ==============================================================================
 ; AizenRex Search-man Professional Installer Script (Inno Setup 6)
 ; Architect & Lead Developer: Riyad (Aizen)
-; Version: 0.3.8 Professional Edition
+; Version: 0.3.9 Professional Edition
 ; ==============================================================================
 
 #define MyAppName "AizenRex Search-man"
 #define MyAppPublisher "Riyad"
-#define MyAppURL "https://github.com/aizenrexx/AizenSearch"
+#define MyAppURL "https://github.com/aizenrexx/AizenRex-Search-man"
 #define MyAppExeName "AizenSearch.App.exe"
 
 ; Paths are resolved relative to AIZEN_SOURCE_ROOT when set (CI/cloud build),
@@ -21,7 +21,7 @@
 ; Version comes from AIZEN_VERSION when set (CI/cloud build), otherwise local default.
 #define MyAppVersion GetEnv('AIZEN_VERSION')
 #if MyAppVersion == ""
-#define MyAppVersion "0.3.8"
+#define MyAppVersion "0.3.9"
 #endif
 
 #define MyAppIcon MySourceRoot + "\src\AizenSearch.App\AizenRex.ico"
