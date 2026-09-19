@@ -97,7 +97,7 @@ This is **intentional and must not be tidied up**. Renaming the assemblies would
 | | |
 |:---|:---|
 | **Repository** | `https://github.com/aizenrexx/AizenRex-Search-man` |
-| **Local working copy** | `H:\My Project Coding\Lindy My Boss\My Software\Searching` |
+| **Local working copy** | Your own clone of this repository, in a folder named `AizenRex Search-man` |
 | **Releases** | `https://github.com/aizenrexx/AizenRex-Search-man/releases` |
 | **Issues** | `https://github.com/aizenrexx/AizenRex-Search-man/issues` |
 | **Default branch** | `main` |

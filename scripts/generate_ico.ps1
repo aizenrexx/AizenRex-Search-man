@@ -9,7 +9,7 @@ Add-Type -AssemblyName System.Drawing
 if (-not $OutputPath) {
     $root = $env:AIZEN_SOURCE_ROOT
     if (-not $root) { $root = Split-Path -Parent $PSScriptRoot }   # repo root, no hard-coded path
-    $OutputPath = Join-Path $root "src\AizenSearch.App\AizenSearch.ico"
+    $OutputPath = Join-Path $root "src\AizenSearch.App\AizenRex.ico"
 }
 $outputPath = $OutputPath
 $sizes = @(256, 128, 64, 48, 32, 16)

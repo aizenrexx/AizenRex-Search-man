@@ -12,7 +12,7 @@ This repository is public. This page explains what is deliberately kept out of i
 | Certificates | `.pfx`, `.pem`, `.key`, `.snk` | GitHub Actions secrets (base64-encoded) |
 | Build output | `bin/`, `obj/`, `.exe`, `.dll`, `.pdb` | Rebuilt from source; shipped as release assets |
 | Logs and dumps | `*.log`, `*.dmp`, `*.bak` | Nowhere — they are disposable |
-| Machine-specific paths | `H:\My Project Coding\...`, `C:\Users\<name>\...` | Never. Scripts resolve paths relative to the project. |
+| Machine-specific paths | `H:\Projects\...`, `C:\Users\<name>\...` | Never. Scripts resolve paths relative to the project. |
 | Local settings | `appsettings.Local.json`, `.env`, `secrets.json` | Environment variables or secrets |
 
 `.gitignore` enforces all of this. It is not a suggestion — anything matching it cannot be committed by accident.

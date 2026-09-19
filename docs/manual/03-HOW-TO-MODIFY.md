@@ -15,7 +15,7 @@ git clone https://github.com/aizenrexx/AizenRex-Search-man.git
 cd AizenRex-Search-man
 ```
 
-Or, if you already have it locally at `H:\My Project Coding\Lindy My Boss\My Software\Searching`, just work there.
+Or, if you already have a clone on your machine (the folder is named `AizenRex Search-man`), just work there.
 
 ### Make a branch
 

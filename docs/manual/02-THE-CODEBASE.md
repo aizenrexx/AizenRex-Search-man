@@ -121,7 +121,6 @@ This project is deliberately thin. It hosts a browser control and relays message
 | `Views/MainWindow.xaml.cs` | 315 | Hosts WebView2, maps `Web/` to a virtual host so relative URLs resolve, sets the window title from `UpdateService.CurrentVersion`, pushes the version into the page after navigation, wires the bridge, and handles window-level events. |
 | `Ipc/IpcBridge.cs` | 407 | **The bridge, and the most important file in this project.** Receives the JSON messages listed in chapter 1, dispatches each `action` to the right core service, and pushes results back into the page. Adding a native-backed feature starts here. |
 | `AizenRex.ico` | — | The application icon. This is the one the project file references. |
-| `AizenSearch.ico` | — | A second icon file of the same size sitting alongside it. The project file does not reference it, so it appears to be a leftover. Verify before deleting. |
 
 ### `src/AizenSearch.App/Web/` — the entire user interface
 
@@ -171,7 +170,6 @@ See `.gitignore` for the exclusion rules.
 | File | Lines | What it is responsible for |
 |:---|---:|:---|
 | `generate_ico.ps1` | 130 | Generates the multi-resolution `.ico` from the source artwork. Runs in the release pipeline before the build. |
-| `build_fluent_ico.py` | 114 | A Python implementation of the same job, kept for use without PowerShell. |
 | `capture_menus.ps1` | 76 | Screenshot helper used when documenting the menus. |
 
 All three resolve paths relative to the project folder — never from a hard-coded personal directory. Keep it that way.

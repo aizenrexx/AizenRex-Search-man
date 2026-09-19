@@ -57,7 +57,6 @@ jobs:
             Write-Host "Icon missing - generating it."
             ./scripts/generate_ico.ps1 -OutputPath $icon
           }
-          Copy-Item $icon "src/AizenSearch.App/AizenSearch.ico" -Force
           Get-Item $icon | Format-List Name, Length
 
       - name: Restore
